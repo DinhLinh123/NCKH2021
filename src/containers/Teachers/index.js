@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { getSemesters } from "../Semesters/action";
 import { getTeachers } from "./action";
 
 const Teacher = () => {
@@ -12,15 +13,23 @@ const Teacher = () => {
   const [dienThoai, setDienThoai] = useState("");
 
   const teacherSelecter = useSelector((state) => state.reducerTeacher.list);
+  const semesterSelecter = useSelector((state) => state.reducerSemester.list);
+
   const isLoading = useSelector((state) => state.reducerTeacher.isLoading);
 
   useEffect(() => {
     dispatch(getTeachers());
   }, []);
 
+  useEffect(() => {
+    dispatch(getSemesters());
+  }, [isLoading]);
+
   return (
     <>
-      <h1>Danh sách giảng viên</h1>
+    
+      <h1>Chọn Giảng giảng viên </h1>
+    
       {isLoading ? (
         <div>Loading</div>
       ) : (
@@ -39,14 +48,16 @@ const Teacher = () => {
               {teacherSelecter?.map ((item, index ) => (
 
             <tr key= {index}>
+               
               <td>{item.maGiangVien}</td>
               <td>{item.hoTen}</td>
               <td>{item.homThu}</td>
               <td>{item.donViCongTac}</td>
               <td>{item.dienThoai}</td>
-              <form>
-                <input name="check" type="checkbox" value="#" />
-              </form>
+             
+              <input type="checkbox" value={item.idHocKy} id="checkbox1" />
+                
+              
             </tr>
             ))}
           </tbody>

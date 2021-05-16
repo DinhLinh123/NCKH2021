@@ -8,7 +8,9 @@ const GET_API_TEACHERS_URL= "http://localhost:8006/api/GiangVien/get-all" ; //ht
 
 export function* sagaGetTeachers () {
     try{
+        
         const reponse = yield axios.get(GET_API_TEACHERS_URL);
+        console.log("aa"+ reponse);
         console.log(reponse.statusCode);
         if (reponse) {
             yield put(getTeacherSuccess(reponse));

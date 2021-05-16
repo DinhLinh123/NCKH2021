@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getTeachers } from '../Teachers/action';
 import { getStudents} from "./action";
 
 const Student = () => {
@@ -13,6 +14,10 @@ const Student = () => {
     useEffect(() => {
         dispatch(getStudents());
     }, []);
+
+    useEffect(() => {
+      dispatch(getTeachers());
+  }, []);
     return (
         <>
             <h1> Chọn GVHD cho SV</h1>

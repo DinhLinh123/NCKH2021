@@ -2,16 +2,16 @@ import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
 import { AcctionTypes, addSemesterSuccess, deleteSemesterError, deleteSemesterSuccess, getSemesterSuccess, putSemestersSuccess } from "./action";
 
-const GET_API_SEMESTER_URL= "https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
-const ADD_API_SEMESTER_URL= "https://quanlydoan.live/api/Hocky/InsertAsyncHocKy" ;
-const DELETE_API_SEMESTER_URL= `https://quanlydoan.live/api/Hocky/` ; 
+const GET_API_SEMESTER_URL= "http://localhost:8009/api/Hocky/GetAllHocKy";//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
+const ADD_API_SEMESTER_URL= "http://localhost:8009/api/Hocky/InsertAsyncHocKy" ;
+const DELETE_API_SEMESTER_URL= `http://localhost:8009/api/Hocky/` ; 
 //const PUT_API_SEMESTER_URL= `https://quanlydoan.live/api/Hocky/` ; 
 
 //--------- get------------------------
 export function* sagaGetSemesters () {
     try{
         const reponse = yield axios.get(GET_API_SEMESTER_URL);
-        // console.log("aa"+ JSON.stringify(reponse));
+         console.log("aa"+ reponse);
         if (reponse) {
             yield put(getSemesterSuccess(reponse));
         }

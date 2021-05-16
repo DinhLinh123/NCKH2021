@@ -18,13 +18,14 @@ export const AcctionTypes= {
 };
 //------------ Call Api --------------------------
 export function getSemesters() {
+
     return {
       type: AcctionTypes.GET_SEMESTERS,
     };
   }
   
   export function getSemesterSuccess(action) {
-    // console.log(action);
+     console.log({action});
     return {
       type: AcctionTypes.GET_SEMESTERS_SUCCESS,
       payload: action,

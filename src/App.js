@@ -9,6 +9,11 @@ import Studentss from "./pages/student";
 import AssignReviewerss from "./pages/assignreviewer";
 import EvaluationBoardss from "./pages/evaluationboard";
 import Semesterss from "./pages/semester";
+import ChooseTeacherss from "./pages/chooseteacher";
+import ListTeacherss from "./pages/listteacher";
+import ListTeacherSemesterss from "./pages/listteachersemester";
+import SubjectListss from "./pages/subjectlist";
+import Topicss from "./pages/topic";
 
 const App = () => {
   return (
@@ -23,20 +28,41 @@ const App = () => {
             </Route>
 
     {/* --------------------------------- */}
-            <Route path="/giang-vien">
+            <Route path="/chon-giang-vien">
+              <ChooseTeacherss />
+            </Route>
+
+            <Route path="/chon-giang-vien-theo-ky">
               <Teacherss />
             </Route>
 
+            <Route path="/danh-sach-gvhd">
+              <ListTeacherss/>
+            </Route>
+
+            <Route path="/danh-sach-giang-vien-theo-ky">
+              <ListTeacherSemesterss/>
+            </Route>
+
+            
+          
     {/* --------------------------------- */}
-            <Route path="/bo-mon">
+            <Route path="/mon-hoc">
               <Subjectss/>
             </Route>
 
+            <Route path="/danh-sach-mon-hoc-theo-ky">
+              <SubjectListss/>
+            </Route>
+    
     {/* --------------------------------- */}
             <Route path="/sinh-vien">
               <Studentss/>
             </Route>
-
+    {/* --------------------------------- */}
+            <Route path="/de-tai">
+              <Topicss/>
+            </Route>
      {/* --------------------------------- */}
             <Route path="/phan-bien">
               <AssignReviewerss/>
