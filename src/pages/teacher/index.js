@@ -1,10 +1,10 @@
 import React from 'react';
-import Teachers from '../../containers';
+import Teacher from '../../containers/Teachers/index';
 
 const Teacherss = () => {
     // useSelector // laasy data ra 
     // useDispatch // goi action
-    return <Teachers/>
+    return <Teacher/>
 };
 
 export default Teacherss;

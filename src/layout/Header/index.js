@@ -31,9 +31,9 @@ const Headers = () => {
           
         
 
-        <StyledHeader.Menu1>Sinh viên</StyledHeader.Menu1>
-        <StyledHeader.Menu1>Học kỳ</StyledHeader.Menu1>
-        <StyledHeader.Menu1>Phân GVHD</StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to='/sinh-vien'>Sinh viên</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to='/phan-bien'>Phân công phản biện</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to='/hoi-dong'>Hội đồng tốt nghiệp</Link></StyledHeader.Menu1>
         <StyledHeader.Menu1>DS GVHD</StyledHeader.Menu1>
       </StyledHeader.MenuBody>
     </StyledHeader.Body>

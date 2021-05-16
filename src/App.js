@@ -4,6 +4,11 @@ import Teacherss from "./pages/teacher";
 import Headers from "./layout/Header";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import Subjectss from "./pages/subject";
+import Studentss from "./pages/student";
+import AssignReviewerss from "./pages/assignreviewer";
+import EvaluationBoardss from "./pages/evaluationboard";
+import Semesterss from "./pages/semester";
 
 const App = () => {
   return (
@@ -14,11 +19,33 @@ const App = () => {
         <div className="main_content">
           <Switch>
             <Route exact path="/">
-              <h1>Trang home</h1>
+              <Semesterss />
             </Route>
+
+    {/* --------------------------------- */}
             <Route path="/giang-vien">
               <Teacherss />
             </Route>
+
+    {/* --------------------------------- */}
+            <Route path="/bo-mon">
+              <Subjectss/>
+            </Route>
+
+    {/* --------------------------------- */}
+            <Route path="/sinh-vien">
+              <Studentss/>
+            </Route>
+
+     {/* --------------------------------- */}
+            <Route path="/phan-bien">
+              <AssignReviewerss/>
+            </Route>   
+       
+       {/* --------------------------------- */}
+            <Route path="/hoi-dong">
+              <EvaluationBoardss/>
+            </Route>        
           </Switch>
         </div>
 
