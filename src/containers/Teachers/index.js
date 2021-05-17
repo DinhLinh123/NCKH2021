@@ -25,11 +25,26 @@ const Teacher = () => {
     dispatch(getSemesters());
   }, [isLoading]);
 
+
+  const [values, setValues] = useState([]);
+  
+  const handleChange = e => {
+    console.log(e.target.value);
+    const checked = e.target.value
+   
+       
+  
+  }
+
+
+  console.log('value :', values);
+
+
+
   return (
     <>
-    
       <h1>Chọn Giảng giảng viên </h1>
-    
+
       {isLoading ? (
         <div>Loading</div>
       ) : (
@@ -45,20 +60,22 @@ const Teacher = () => {
             </tr>
           </thead>
           <tbody>
-              {teacherSelecter?.map ((item, index ) => (
+            {teacherSelecter?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.maGiangVien}</td>
+                <td>{item.hoTen}</td>
+                <td>{item.homThu}</td>
+                <td>{item.donViCongTac}</td>
+                <td>{item.dienThoai}</td>
 
-            <tr key= {index}>
-               
-              <td>{item.maGiangVien}</td>
-              <td>{item.hoTen}</td>
-              <td>{item.homThu}</td>
-              <td>{item.donViCongTac}</td>
-              <td>{item.dienThoai}</td>
-             
-              <input type="checkbox" value={item.idHocKy} id="checkbox1" />
-                
-              
-            </tr>
+                <input
+                  type="checkbox"
+                  value={item.id}
+                  id="checkbox1"
+                  // checked={true}
+                  onChange={e => handleChange(e)}
+                />
+              </tr>
             ))}
           </tbody>
         </table>

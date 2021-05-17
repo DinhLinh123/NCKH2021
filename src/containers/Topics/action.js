@@ -4,9 +4,11 @@ export const AcctionTypes= {
   GET_TOPICS_ERROR: "GET_TOPICS_ERROR",
 };
 //------------ Call Api --------------------------
-export function getTopics() {
+export function getTopics(idHocKy) {
+  console.log("idHocKyTopic " + idHocKy);
     return {
       type: AcctionTypes.GET_TOPICS,
+      payload: idHocKy,
     };
   }
   
@@ -25,3 +27,7 @@ export function getTopics() {
       payload: err,
     };
   }
+
+
+  //-------------
+  

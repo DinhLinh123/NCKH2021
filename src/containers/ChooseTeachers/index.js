@@ -10,15 +10,22 @@ const ChooseTeacher = () => {
     useEffect(() => {
         dispatch(getSemesters());
       }, []);
-      
+       
+
+      const handleSelectHocKy = (value) => {
+          console.log('value select : ', value);
+           if(typeof window !== undefined){
+               localStorage.setItem('hocKySelect, ', JSON.stringify(value))
+           }
+      }
     return (
         <>
         <h1>Chọn Giảng Viên Hướng Dẫn theo kỳ </h1>
             {semesterSelecter.map ((item, index ) => {
                return (
                 <div key={index}>
-                    <Link to='/chon-giang-vien-theo-ky'>
-                    <button>{item.tenHocKy}</button>
+                    <Link to='/danh-sach-giang-vien'>
+                    <button onClick={() => handleSelectHocKy(item)}>{item.tenHocKy}</button>
                     </Link>
                 </div>
                 ) 

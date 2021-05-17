@@ -6,13 +6,13 @@ export const INITSTALL = {
 
 const default_list = (state = INITSTALL, action) => {
     switch(action.type){
-        case AcctionTypes.GET_TOPICS: 
+        case AcctionTypes.GET_SUBJECTLISTS: 
             return{
                 ...state,
                 isLoading: false,
             };
         
-        case AcctionTypes.GET_TOPICS_SUCCESS:
+        case AcctionTypes.GET_SUBJECTLISTS_SUCCESS:
             return {
                 ...state,
                 list: action.payload.data.data,
@@ -25,5 +25,3 @@ const default_list = (state = INITSTALL, action) => {
 };
 
 export default default_list;
-
-//==================

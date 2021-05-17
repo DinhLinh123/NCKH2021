@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getSemesters } from '../Semesters/action';
 
-const ListTeacher = () => {
+const TopicSemester = () => {
     const dispatch = useDispatch();
 
     const semesterSelecter = useSelector((state) => state.reducerSemester.list);
@@ -13,11 +13,11 @@ const ListTeacher = () => {
       
     return (
         <div>
-            <h1>Danh sách GVHD đã chọn </h1>
+            <h1>Danh sách Đề tài theo kỳ </h1>
             {semesterSelecter.map ((item, index ) => {
                return (
                 <div key={index}>
-                    <Link to={`/danh-sach-gvhd-theo-ky/${item?.tenHocKy}/${item?.idHocKy}`}>
+                    <Link to={`/danh-sach-de-tai-theo-ky/${item?.tenHocKy}/${item?.idHocKy}`}>
                     <button>{item.tenHocKy}</button>
                     </Link>
                 </div>
@@ -27,4 +27,4 @@ const ListTeacher = () => {
     );
 };
 
-export default ListTeacher;
+export default TopicSemester;

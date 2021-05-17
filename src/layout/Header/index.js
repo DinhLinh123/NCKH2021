@@ -25,13 +25,14 @@ const Headers = () => {
       <StyledHeader.MenuBody>
           
         <StyledHeader.Menu1><Link to='/'>Trang chủ</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to='/mon-hoc'>Môn Học</Link></StyledHeader.Menu1>   <StyledHeader.Menu1><Link to='/chon-giang-vien'>Chọn Giảng viên</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to='/danh-sach-gvhd'>Danh sách GVHD</Link></StyledHeader.Menu1> <StyledHeader.Menu1><Link to='/sinh-vien'>Sinh viên</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to='/mon-hoc'>Môn Học</Link></StyledHeader.Menu1>   <StyledHeader.Menu1>
+          <Link to='/chon-giang-vien'>Chọn Giảng viên</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to='/danh-sach-gvhd'>Danh sách GVHD</Link></StyledHeader.Menu1> 
         <StyledHeader.Menu1><Link to='/sinh-vien'>Sinh viên</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to='/de-tai'>Đề tài</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to='/danh-sach-de-tai'>Đề tài</Link></StyledHeader.Menu1>
 
         <StyledHeader.Menu1><Link to='/phan-bien'>Phân công phản biện</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to='/hoi-dong'>Hội đồng tốt nghiệp</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to='/hoi-dong-tot-nghiep'>Hội đồng tốt nghiệp</Link></StyledHeader.Menu1>
         
       </StyledHeader.MenuBody>
     </StyledHeader.Body>

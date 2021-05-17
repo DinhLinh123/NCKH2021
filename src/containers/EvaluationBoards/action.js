@@ -4,9 +4,10 @@ export const AcctionTypes= {
   GET_EVALUATIONBOARDS_ERROR: "GET_EVALUATIONBOARDS_ERROR",
 };
 //------------ Call Api --------------------------
-export function getEvaluationBoards() {
+export function getEvaluationBoards(idHocKy) {
     return {
       type: AcctionTypes.GET_EVALUATIONBOARDS,
+      payload: idHocKy,
     };
   }
   

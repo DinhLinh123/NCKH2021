@@ -6,6 +6,8 @@ export { default as SubjectList} from "./SubjectLists";
 export { default as Student} from "./Students";
 export { default as AssignReviewer} from "./AssignReviewers";
 export { default as EvaluationBoard} from "./EvaluationBoards";
+export { default as EvaluationBoardSemester} from "./EvaluationBoardSemesters";
 export { default as Topic} from "./Topics";
+export { default as TopicSemester} from "./TopicSemesters";
 export { default as Semester} from "./Semesters";
 export { default as ChooseTeacher} from "./ChooseTeachers";

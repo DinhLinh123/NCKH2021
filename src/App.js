@@ -14,6 +14,8 @@ import ListTeacherss from "./pages/listteacher";
 import ListTeacherSemesterss from "./pages/listteachersemester";
 import SubjectListss from "./pages/subjectlist";
 import Topicss from "./pages/topic";
+import TopicsSemesterss from "./pages/topicsemesters";
+import EvaluationBoardSemesterss from "./pages/evaluationboardsemester";
 
 const App = () => {
   return (
@@ -32,7 +34,7 @@ const App = () => {
               <ChooseTeacherss />
             </Route>
 
-            <Route path="/chon-giang-vien-theo-ky">
+            <Route path="/danh-sach-giang-vien">
               <Teacherss />
             </Route>
 
@@ -40,7 +42,7 @@ const App = () => {
               <ListTeacherss/>
             </Route>
 
-            <Route path="/danh-sach-giang-vien-theo-ky">
+            <Route path="/danh-sach-gvhd-theo-ky/:tenHocKy/:idHocKy">
               <ListTeacherSemesterss/>
             </Route>
 
@@ -51,7 +53,8 @@ const App = () => {
               <Subjectss/>
             </Route>
 
-            <Route path="/danh-sach-mon-hoc-theo-ky">
+            <Route  path="/danh-sach-mon-hoc/:tenHocKy/:idHocKy">
+              
               <SubjectListss/>
             </Route>
     
@@ -60,7 +63,11 @@ const App = () => {
               <Studentss/>
             </Route>
     {/* --------------------------------- */}
-            <Route path="/de-tai">
+          <Route path="/danh-sach-de-tai">
+              <TopicsSemesterss/>
+            </Route>
+
+            <Route path="/danh-sach-de-tai-theo-ky/:tenHocKy/:idHocKy">
               <Topicss/>
             </Route>
      {/* --------------------------------- */}
@@ -69,7 +76,12 @@ const App = () => {
             </Route>   
        
        {/* --------------------------------- */}
-            <Route path="/hoi-dong">
+            <Route path="/hoi-dong-tot-nghiep">
+              <EvaluationBoardSemesterss/>
+            </Route>        
+
+             {/* --------------------------------- */}
+             <Route path="/danh-sach-hoi-dong-tot-nghiep/:tenHocKy/:idHocKy">
               <EvaluationBoardss/>
             </Route>        
           </Switch>

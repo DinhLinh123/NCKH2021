@@ -18,7 +18,6 @@ export const AcctionTypes= {
 };
 //------------ Call Api --------------------------
 export function getSemesters() {
-
     return {
       type: AcctionTypes.GET_SEMESTERS,
     };

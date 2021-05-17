@@ -5,6 +5,10 @@ import reducerAssignReviewer from "../../containers/AssignReviewers/reducer";
 import reducerEvaluationBoard from "../../containers/EvaluationBoards/reducer";
 import reducerTopic from "../../containers/Topics/reducer";
 import reducerSemester from "../../containers/Semesters/reducer";
+import reducerSubject from "../../containers/Subjects/reducer";
+import reducerSubjectList from "../../containers/SubjectLists/reducer";
+import reducerListTeacherSemester from "../../containers/ListTeacherSemesters/reducer";
+
 
 
 export const rootReducer = combineReducers({
@@ -14,5 +18,7 @@ export const rootReducer = combineReducers({
     reducerEvaluationBoard,
     reducerTopic,
     reducerSemester,
-    
+    reducerSubject,
+    reducerSubjectList,
+    reducerListTeacherSemester,
   });
