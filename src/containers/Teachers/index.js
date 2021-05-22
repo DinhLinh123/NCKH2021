@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getSemesters } from "../Semesters/action";
+import { StyledSemester } from "../Semesters/styled";
 import { getTeachers } from "./action";
 
 const Teacher = () => {
@@ -43,11 +44,13 @@ const Teacher = () => {
 
   return (
     <>
-      <h1>Chọn Giảng giảng viên </h1>
+    <div>
+      <h1>Chọn Giảng giảng viên Hướng dẫn Kỳ</h1>
 
       {isLoading ? (
         <div>Loading</div>
       ) : (
+        <StyledSemester.Body>
         <table>
           <thead>
             <tr>
@@ -79,7 +82,9 @@ const Teacher = () => {
             ))}
           </tbody>
         </table>
+        </StyledSemester.Body>
       )}
+      </div>
     </>
   );
 };

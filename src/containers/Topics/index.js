@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { StyledSemester } from '../Semesters/styled';
 import { getTopics } from './action';
 
 const Topic = () => {
@@ -17,6 +18,7 @@ console.log("topicSelecter " + topicSelecter);
   return (
     <div>
       <h1>Danh sách đề tài {tenHocKy}</h1>
+      <StyledSemester.Body>
       <table>
           <thead>
             <tr>
@@ -47,14 +49,15 @@ console.log("topicSelecter " + topicSelecter);
               <td>{item.isDat}</td>
               <td>{item.ngayTao}</td>
               <td>{item.nguoiTao}</td>
-              <td><button>Sửa</button></td>
-              <td><button>Xóa</button></td>
+              <td><StyledSemester.ButtonAdd>Sửa</StyledSemester.ButtonAdd></td>
+              <td><StyledSemester.Delete>Xóa</StyledSemester.Delete></td>
                 
               
             </tr>
             ))}
           </tbody>
         </table>
+        </StyledSemester.Body>
     </div>
   );
 };

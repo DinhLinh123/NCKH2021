@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { StyledSemester } from '../Semesters/styled';
 import { getTeachers } from '../Teachers/action';
 import { getStudents} from "./action";
 
@@ -20,11 +21,13 @@ const Student = () => {
   }, []);
     return (
         <>
+        <div>
             <h1> Chọn GVHD cho SV</h1>
             {isLoading ? (
         <div>Loading</div>
       ) : (
-        <table>
+        <StyledSemester.Body>
+          <table>
           <thead>
             <tr>
               <th>Mã sinh viên</th>
@@ -59,7 +62,10 @@ const Student = () => {
              ))}
           </tbody>
         </table>
+        </StyledSemester.Body>
+        
       )}
+      </div>
         </>
     );
 };

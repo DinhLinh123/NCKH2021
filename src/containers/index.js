@@ -1,3 +1,4 @@
+export { default as Home} from "./Home";
 export { default as Teacher} from "./Teachers";
 export { default as ListTeacher} from "./ListTeachers";
 export { default as ListTeacherSemester} from "./ListTeacherSemesters";

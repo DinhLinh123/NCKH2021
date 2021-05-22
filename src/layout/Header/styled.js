@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const StyledHeader= {
     Body: styled.div `
+    display: flex;
     width: 100%;
+    
         
         `,
     Img: styled.img `
@@ -10,19 +12,27 @@ export const StyledHeader= {
         
     `,
     MenuBody: styled.div `
-        display: flex;
+        display: block;
         color: #1E90FF;
         justify-content: center;
+        //text-decoration: none;
+       //width: 15%;
+       margin-right: 80px;
+       width: 245px;
         
     `,
     Menu1: styled.div `
-        width: 10%;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #E8E8E8;
         
+        a {
+            text-decoration: none;
+        }
         
     `,
+    
     Menu2: styled.div `
         
     `,

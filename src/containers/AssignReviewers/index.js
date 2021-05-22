@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { StyledSemester } from "../Semesters/styled";
 import { getAssignReviewers} from "./action";
 
 const AssignReviewer = () => {
@@ -20,10 +21,12 @@ const AssignReviewer = () => {
 
   return (
     <>
-      <h1>Danh sách giảng viên</h1>
+    <div>
+      <h1>Danh sách phân công phản biện</h1>
       {isLoading ? (
         <div>Loading</div>
       ) : (
+        <StyledSemester.Body>
         <table>
           <thead>
             <tr>
@@ -52,7 +55,9 @@ const AssignReviewer = () => {
             ))}
           </tbody>
         </table>
+        </StyledSemester.Body>
       )}
+      </div>
     </>
   );
 };

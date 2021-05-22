@@ -2,15 +2,23 @@ import { debounce } from "@redux-saga/core/effects";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link, useRouteMatch } from "react-router-dom";
+import styled from "styled-components";
 import { addSemester, deleteSemesters, getSemesters, putSemesters} from "./action";
+import { StyledSemester } from "./styled";
+
+
+
 
 const Semester = () => {
 const dispatch = useDispatch();
+let match = useRouteMatch();
 
 const [idHocKy, setIdHocky] = useState("");
 const [maHocKy, setMaHocKy] = useState("");
 const [tenHocKy, setTenHocKy] = useState("");
 const [changeVersion, setChangeVersion] = useState(true);
+const [changeVersion1, setChangeVersion1] = useState(false);
 // const [ngayTao, setNgayTao] = useState("");
 // const [ngayXoa, setNgayXoa] = useState(null);
 // const [isActive, setIsActive] = useState(true);
@@ -27,6 +35,11 @@ const [changeVersion, setChangeVersion] = useState(true);
   // const getSem = () =>{
   //   dispatch(getSemesters());
   // };
+
+  const onAdd = () =>{
+    setChangeVersion1(true);
+
+  };
 // ----------------- Thêm ---------------------
   const onAddSubmit = (e) => {
     // e.preventDefault();
@@ -39,6 +52,7 @@ const [changeVersion, setChangeVersion] = useState(true);
       if(changeVersion === true) {
         dispatch(addSemester(add));
         console.log(isLoading);
+        setChangeVersion1(false);
       } else{
         
         dispatch(putSemesters(idHocKy,add));
@@ -65,22 +79,30 @@ const [changeVersion, setChangeVersion] = useState(true);
 
   //------ sửa -------------------------------------
   const OnPutSemesters = (idHocKy, item) =>{
+    setChangeVersion1(true);
     setChangeVersion(false);
     setIdHocky(idHocKy);
     setMaHocKy(item.maHocKy);
     setTenHocKy(item.tenHocKy);
 
   };
+  const onHuy =()=>{
+    setChangeVersion1(false);
+
+  };
 
   return (
-    <>
+    <StyledSemester.Div>
+      <div>
       <h1>Danh sách Học kỳ </h1>
       {isLoading ? (
         <div>Loading</div>
       ) : (
-        <div>
+        <StyledSemester.Body>
           <div>
-            <table>
+            <StyledSemester.ButtonAdd className="bottom" type="submit" onClick={() => onAdd()}>Thêm học kỳ</StyledSemester.ButtonAdd>
+            
+            <table style={changeVersion1 ? {display: "block"} : {display: "none"}}>
             <thead>
                 <tr>
                   <td>{changeVersion ? "Thêm Học kỳ" : "Sửa học kỳ"}</td>
@@ -112,7 +134,7 @@ const [changeVersion, setChangeVersion] = useState(true);
                     <button type="submit" onClick={() => onAddSubmit()}>
                     {changeVersion ? "Thêm" : "Sửa"}
                     </button>
-                    <button>Hủy</button>
+                    <button type="submit" onClick={() => onHuy()}>Hủy</button>
                     
                   </td>
                 </tr>
@@ -122,32 +144,40 @@ const [changeVersion, setChangeVersion] = useState(true);
         <table>
           <thead>
             <tr>
+              <th>Xem</th>
               <th>Mã học kỳ</th>
               <th>Tên học kỳ</th>
               <th>Ngày tạo</th>
               <th>Hành động</th>
+              <th></th>
+
             </tr>
           </thead>
           <tbody>
               {semesterSelecter.map ((item, index ) => {
                 // console.log(item);
                 return (
-
             <tr key= {index}>
+               <Link to={`/menu/${item?.tenHocKy}/${item?.idHocKy}`}>
+              <td><StyledSemester.See>Xem Thông tin</StyledSemester.See></td>
+              </Link>
               <td>{item?.maHocKy ?? ''}</td>
               <td>{item?.tenHocKy ?? ''}</td>
+              
               <td>{item?.ngayTao ?? ''}</td>
-              <td><button onClick={() => OnPutSemesters(item.idHocKy, item)}>Sửa</button></td>
-              <td><button onClick={() => onDeleteSemesters(item.idHocKy)}>Xóa</button></td>
+              <td><StyledSemester.ButtonAdd onClick={() => OnPutSemesters(item.idHocKy, item)}>Sửa</StyledSemester.ButtonAdd></td>
+              <td><StyledSemester.Delete onClick={() => onDeleteSemesters(item.idHocKy)}>Xóa</StyledSemester.Delete></td>
               
             </tr>
+            
                 )
 })}
           </tbody>
         </table>
-        </div>
+        </StyledSemester.Body>
       )}
-    </>
+      </div>
+    </StyledSemester.Div>
   );
 };
 

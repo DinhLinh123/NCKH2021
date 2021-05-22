@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { StyledSemester } from "../Semesters/styled";
 import { getEvaluationBoards } from "./action";
 
 const EvaluationBoard= () => {
@@ -20,10 +21,12 @@ const EvaluationBoard= () => {
 
   return (
     <>
-      <h1>Danh sách giảng viên</h1>
+    <div>
+      <h1>Danh sách Hội đồng tốt nghiệp</h1>
       {isLoading ? (
         <div>Loading</div>
       ) : (
+        <StyledSemester.Body>
         <table>
           <thead>
             <tr>
@@ -36,6 +39,7 @@ const EvaluationBoard= () => {
               <th>Nhận xét</th>
               <th>Ngày tạo</th>
               <th>Hành động</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -50,14 +54,16 @@ const EvaluationBoard= () => {
               <td>{item.DiemHoiDong}</td>
               <td>{item.NhanXet}</td>
               <td>{item.NgayTao}</td>
-              <td><button>sửa</button></td>
-              <td><button>xóa</button></td>
+              <td><StyledSemester.ButtonAdd>sửa</StyledSemester.ButtonAdd></td>
+              <td><StyledSemester.Delete>xóa</StyledSemester.Delete></td>
               
             </tr>
             ))}
           </tbody>
         </table>
+        </StyledSemester.Body>
       )}
+      </div>
     </>
   );
 };

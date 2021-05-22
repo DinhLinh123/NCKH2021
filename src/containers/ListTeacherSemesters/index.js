@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { StyledSemester } from '../Semesters/styled';
 import { getLisTeacherSemesters } from './action';
 
 const ListTeacherSemester = () => {
@@ -18,6 +19,7 @@ const ListTeacherSemester = () => {
     return (
         <div>
             <h1>Danh sách giảng viên đã chọn {tenHocKy}</h1>
+            <StyledSemester.Body>
             <table>
           <thead>
             <tr>
@@ -28,6 +30,7 @@ const ListTeacherSemester = () => {
               <th>Điện thoại</th>
               <th>Ngày tạo</th>
               <th>Hành động</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -41,14 +44,15 @@ const ListTeacherSemester = () => {
               <td>{item.email}</td>
               <td>{item.dienThoai}</td>
               <td>{item.ngayTao}</td>
-              <td><button>Sửa</button></td>
-              <td><button>Xóa</button></td>
+              <td><StyledSemester.ButtonAdd>Sửa</StyledSemester.ButtonAdd></td>
+              <td><StyledSemester.Delete>Xóa</StyledSemester.Delete></td>
                 
               
             </tr>
             ))}
           </tbody>
         </table>
+        </StyledSemester.Body>
         </div>
     );
 };
