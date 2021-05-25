@@ -2,10 +2,38 @@ import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
 import { AcctionTypes, addSemesterSuccess, deleteSemesterError, deleteSemesterSuccess, getSemesters, getSemesterSuccess, putSemestersSuccess } from "./action";
 
-const GET_API_SEMESTER_URL= "https://quanlydoan.live/api/Hocky/GetAllHocKy";//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
-const ADD_API_SEMESTER_URL= "https://quanlydoan.live/api/Hocky/InsertAsyncHocKy" ;
-const DELETE_API_SEMESTER_URL= `https://quanlydoan.live/api/Hocky/` ; 
+const GET_API_SEMESTER_URL= "https://api.quanlydoan.live/api/Hocky/GetAllHocKy";//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
+const ADD_API_SEMESTER_URL= "https://api.quanlydoan.live/api/Hocky/InsertAsyncHocKy" ;
+const DELETE_API_SEMESTER_URL= `https://api.quanlydoan.live/api/Hocky/` ; 
 //const PUT_API_SEMESTER_URL= `https://quanlydoan.live/api/Hocky/` ; 
+
+var axios = require('axios');
+var qs = require('qs');
+var data = qs.stringify({
+  'client_id': 'GHMSOFTCLIENT',
+  'grant_type': 'password',
+  '': '',
+  'userName': 'linhdtt026',
+  'password': '123456',
+  'type': '0',
+  'client_secret': 'GHMSOFT' 
+});
+var config = {
+  method: 'post',
+  url: 'http://auth.quanlydoan.live/connect/token',
+  headers: { 
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
 
 //--------- get------------------------
 export function* sagaGetSemesters () {

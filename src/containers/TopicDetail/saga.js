@@ -2,7 +2,7 @@ import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
 import { AcctionTypes, getTopicDetailSuccess } from "./action";
 
-const GET_API_TOPICS_DETAIL_URL= `https://quanlydoan.live//api/ChiTietDeTai/SerchByIdDeTai/` ; // https://quanlydoan.live//api
+const GET_API_TOPICS_DETAIL_URL= `https://api.quanlydoan.live//api/ChiTietDeTai/SerchByIdDeTai/` ; // https://quanlydoan.live//api
 
 
 

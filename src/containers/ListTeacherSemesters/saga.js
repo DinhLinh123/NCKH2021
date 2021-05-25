@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 
 import { AcctionTypes, getLisTeacherSemesterSuccess } from "./action";
 
-const GET_API_LISTTEACHERSEMESTERS_URL= `https://quanlydoan.live/api/GiangVienHuongDan/GetAllGiangVienHuongDan/` ; // ${idHocKy} /api/GiangVienHuongDan/GetAllGiangVienHuongDan/{idhocky}
+const GET_API_LISTTEACHERSEMESTERS_URL= `https://api.quanlydoan.live/api/GiangVienHuongDan/GetAllGiangVienHuongDan/` ; // ${idHocKy} /api/GiangVienHuongDan/GetAllGiangVienHuongDan/{idhocky}
 
 
 

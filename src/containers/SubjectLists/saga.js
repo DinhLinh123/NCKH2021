@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 
 import { AcctionTypes, getSubjectListSuccess } from "./action";
 
-const GET_API_SUBJECTLISTS_URL= `https://quanlydoan.live/api/MonHoc/` ; // ${idHocKy}
+const GET_API_SUBJECTLISTS_URL= `https://api.quanlydoan.live/api/MonHoc/` ; // ${idHocKy}
 
 
 
