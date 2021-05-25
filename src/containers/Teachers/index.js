@@ -12,6 +12,8 @@ const Teacher = () => {
   const [hoTen, setHoTen] = useState("");
   const [donViCongTac, setDonViCongTac] = useState("");
   const [dienThoai, setDienThoai] = useState("");
+  const [listSelected, setListSelected] = useState([]);
+
 
   const teacherSelecter = useSelector((state) => state.reducerTeacher.list);
   const semesterSelecter = useSelector((state) => state.reducerSemester.list);
@@ -29,16 +31,15 @@ const Teacher = () => {
 
   const [values, setValues] = useState([]);
   
-  const handleChange = e => {
-    console.log(e.target.value);
-    const checked = e.target.value
-   
+  const handleChange = (selected) => {
+    console.log(selected,'gv dc chon'); 
+    setListSelected([...listSelected,selected])  
        
   
   }
 
 
-  console.log('value :', values);
+  console.log('value :', listSelected);
 
 
 
@@ -71,13 +72,13 @@ const Teacher = () => {
                 <td>{item.donViCongTac}</td>
                 <td>{item.dienThoai}</td>
 
-                <input
+                <td><input
                   type="checkbox"
                   value={item.id}
                   id="checkbox1"
                   // checked={true}
-                  onChange={e => handleChange(e)}
-                />
+                  onChange={() => handleChange(item)}
+                /></td>
               </tr>
             ))}
           </tbody>

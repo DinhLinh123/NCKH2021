@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledSemester= {
     ButtonAdd: styled.button`
         background: #66CDAA;
-        height: 30px;
+        padding: 10px;
         border: none;
     `,
     Body: styled.div`
@@ -18,7 +18,7 @@ export const StyledSemester= {
 
         }
         th, td {
-            padding: 30px;
+            padding: 15px;
     }
     `,
     Div: styled.div`
@@ -28,13 +28,17 @@ export const StyledSemester= {
     `,
     See: styled.button`
         background: #4682B4;
-        height: 30px;
+        padding: 10px;
         border: none;
         color: white;
+        a {
+            text-decoration: none;
+            color: white;
+        }
     `,
     Delete: styled.button`
         background: red;
-        height: 30px;
+        padding: 10px;
         border: none;
         color: white;
     `,

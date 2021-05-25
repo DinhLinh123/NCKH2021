@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { StyledSemester } from '../Semesters/styled';
 import { getSubjectLists } from './action';
 
 const SubjectList = () => {
@@ -18,6 +19,7 @@ const SubjectList = () => {
     return (
         <div>
             <h1>Danh sách Môn {tenHocKy}</h1>
+            <StyledSemester.Body>
             <table>
           <thead>
             <tr>
@@ -26,6 +28,7 @@ const SubjectList = () => {
               <th>Điều kiện tiên quyết</th>
               <th>Ngày tạo</th>
               <th>Hành động</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -37,14 +40,15 @@ const SubjectList = () => {
               <td>{item.tenMonHoc}</td>
               <td>{item.typeApprover}</td>
               <td>{item.ngayTao}</td>
-              <button>Sửa</button>
-              <button>Xóa</button>
+              <td><StyledSemester.ButtonAdd>Sửa</StyledSemester.ButtonAdd></td>
+              <td><StyledSemester.Delete>Xóa</StyledSemester.Delete></td>
                 
               
             </tr>
             ))}
           </tbody>
         </table>
+        </StyledSemester.Body>
         </div>
     );
 };

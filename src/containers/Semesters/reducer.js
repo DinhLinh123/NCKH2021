@@ -14,6 +14,7 @@ const default_list = (state = INITSTALL, action) => {
             };
         
         case AcctionTypes.GET_SEMESTERS_SUCCESS:
+            console.log({action},'reducer get HK sc');
             return {
                 ...state,
                 list: action.payload.data.data,
@@ -27,22 +28,10 @@ const default_list = (state = INITSTALL, action) => {
             };
 
         case AcctionTypes.ADD_SEMESTERS_SUCCESS:
-            // const test= {
-            //     idHocKy: "f3e19gf53-74a5-47fd-a0e7-12bde47c7b06",
-            //     isActive: true,
-            //     isDelete: false,
-            //     maHocKy: "ppppppppppppppppppppppppppppppppp",
-            //     ngayTao: "2021-05-12T22:36:10.6733333",
-            //     ngayXoa: null,
-            //     tenHocKy: "appppppppppppppppppppppppppppppppp"
-            // }
-            // console.log("add",action.payload.data.data);
-            // // console.log(state.list);
-            // const newList = [...state.list, test]
-            // console.log(newList);
+           console.log({action},'reducer add hoc ky sc');
             return {
                 ...state,
-                list: [...state.list, action.payload.data.data],
+                list: [...state.list, action.payload],
                 isLoading: false,
             };
 

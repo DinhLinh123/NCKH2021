@@ -1,6 +1,6 @@
 import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
-import { AcctionTypes, addSemesterSuccess, deleteSemesterError, deleteSemesterSuccess, getSemesterSuccess, putSemestersSuccess } from "./action";
+import { AcctionTypes, addSemesterSuccess, deleteSemesterError, deleteSemesterSuccess, getSemesters, getSemesterSuccess, putSemestersSuccess } from "./action";
 
 const GET_API_SEMESTER_URL= "https://quanlydoan.live/api/Hocky/GetAllHocKy";//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
 const ADD_API_SEMESTER_URL= "https://quanlydoan.live/api/Hocky/InsertAsyncHocKy" ;
@@ -27,12 +27,13 @@ export function* watchSagaGetSemesters(){
 
 //------------add------------------------------
 export function* sagaAddSemesters(action) {
-     console.log(action.payload);
+     console.log(action.payload,'saga');
      
     try {
         const reponse = yield axios.post(ADD_API_SEMESTER_URL, action.payload);
 
-    yield put(addSemesterSuccess(reponse));
+        //  yield reponse && put(addSemesterSuccess(action.payload));
+        if(reponse) yield getSemesters();
     } catch (error) {
 
         console.log({error});

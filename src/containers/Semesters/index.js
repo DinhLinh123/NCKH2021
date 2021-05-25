@@ -24,6 +24,7 @@ const [changeVersion1, setChangeVersion1] = useState(false);
 // const [isActive, setIsActive] = useState(true);
 // const [isDelete, setIsDelete] = useState(false);
 //const [ngayTao, setNgayTao] = useState("");
+// useState
 
   const semesterSelecter = useSelector((state) => state.reducerSemester.list);
   const isLoading = useSelector((state) => state.reducerSemester.isLoading);
@@ -40,9 +41,12 @@ const [changeVersion1, setChangeVersion1] = useState(false);
     setChangeVersion1(true);
 
   };
+
+  const getPro =()=> {
+    dispatch(getSemesters())  ;
+  };
 // ----------------- Thêm ---------------------
   const onAddSubmit = (e) => {
-    // e.preventDefault();
     console.log({maHocKy, tenHocKy});
     //const add = {maHocKy, tenHocKy };
     
@@ -50,12 +54,15 @@ const [changeVersion1, setChangeVersion1] = useState(false);
     if(maHocKy && tenHocKy){
       const add = {maHocKy, tenHocKy};
       if(changeVersion === true) {
-        dispatch(addSemester(add));
+        dispatch(addSemester(add, getPro));
+        // debounce(dispatch(getSemesters()), 2000)
         console.log(isLoading);
         setChangeVersion1(false);
       } else{
         
-        dispatch(putSemesters(idHocKy,add));
+        dispatch(putSemesters(idHocKy,add, getPro));
+        dispatch(getSemesters());
+        debounce(dispatch(getSemesters()), 2000)
         // dispatch(getSemesters());
         setChangeVersion(true);
       }
@@ -95,9 +102,9 @@ const [changeVersion1, setChangeVersion1] = useState(false);
     <StyledSemester.Div>
       <div>
       <h1>Danh sách Học kỳ </h1>
-      {isLoading ? (
+      {/* {isLoading ? (
         <div>Loading</div>
-      ) : (
+      ) : ( */}
         <StyledSemester.Body>
           <div>
             <StyledSemester.ButtonAdd className="bottom" type="submit" onClick={() => onAdd()}>Thêm học kỳ</StyledSemester.ButtonAdd>
@@ -175,7 +182,7 @@ const [changeVersion1, setChangeVersion1] = useState(false);
           </tbody>
         </table>
         </StyledSemester.Body>
-      )}
+      {/* )} */}
       </div>
     </StyledSemester.Div>
   );

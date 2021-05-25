@@ -18,8 +18,10 @@ import TopicsSemesterss from "./pages/topicsemesters";
 import EvaluationBoardSemesterss from "./pages/evaluationboardsemester";
 import Homess from "./pages/Home";
 import Banner from "./layout/Banner";
+import { TopicDetail } from "./containers";
 
 const App = () => {
+
   return (
     <Provider store={store}>
     <div className="app" >
@@ -50,7 +52,7 @@ const App = () => {
               <Headers />
             </Route>
 
-           
+       
 
             {/* <Route path="/danh-sach-giang-vien">
             
@@ -104,6 +106,7 @@ const App = () => {
              {/* <Route path="/danh-sach-hoi-dong-tot-nghiep/:tenHocKy/:idHocKy">
               <EvaluationBoardss/>
             </Route>         */}
+
           </Switch>
         </div>
 

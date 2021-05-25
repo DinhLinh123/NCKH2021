@@ -24,7 +24,7 @@ export function getSemesters() {
   }
   
   export function getSemesterSuccess(action) {
-     console.log({action});
+     console.log({action},'get Hoc ky success');
     return {
       type: AcctionTypes.GET_SEMESTERS_SUCCESS,
       payload: action,
@@ -40,11 +40,12 @@ export function getSemesters() {
   }
 
   // -------------- ADD ---------------------
-  export function addSemester(data) {
-    console.log({data});
+  export function addSemester(data, getPro) {
+    console.log({data},'action add HK');
     return {
       type: AcctionTypes.ADD_SEMESTERS,
       payload: data,
+      getPro
     };
   }
   
