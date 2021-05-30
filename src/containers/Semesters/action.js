@@ -44,6 +44,7 @@ export function getSemesters() {
     console.log({data},'action add HK');
     return {
       type: AcctionTypes.ADD_SEMESTERS,
+      
       payload: data,
       getPro
     };

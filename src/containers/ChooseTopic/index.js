@@ -10,6 +10,7 @@ import { getStudents} from "./action";
 const Student = () => {
 
   const [save , setSave]= useState([]);
+  const [hide, setHide] =useState(true);
 
   let { idHocKy } = useParams();
     let {tenHocKy} = useParams();
@@ -27,6 +28,22 @@ const Student = () => {
     useEffect(() => {
       dispatch(getLisTeacherSemesters(idHocKy));
   }, []);
+  //================Hiện chọn đề tài-------------------
+
+  const onShow =()=>{
+    setHide(false);
+  }
+
+  const onHide =() =>{
+    setHide(true);
+  }
+
+  // let hide = document.getElementById("hide");
+  // window.onclick = function(event) {
+  //   if (event.target == hide) {
+  //     setHide(true);
+  //   }
+  // }
 
   //------------------------
 
@@ -92,7 +109,7 @@ const Student = () => {
               <td>{item.dienThoai}</td>
               
               
-              <td>
+              {/* <td>
                   
                     <select name="myName" onChange={onHandelTopic}>
                     {topicSelecter?.map ((i, index ) => (
@@ -100,13 +117,49 @@ const Student = () => {
                         ))}
                         </select>
                         </td>
-              <td><button type="submit" onClick={updateTopic}>Lưu</button></td>
+              <td><button type="submit" onClick={updateTopic}>Lưu</button></td> */}
+
+              <td>
+                <button onClick={()=> onShow()}>Phân công ĐT</button>
+              </td>
               
                
             </tr>
              ))}
           </tbody>
         </table>
+        <StyledSemester.Popup id="hide" style={hide ? {display: "none"} : {display: "block"}} >
+          <StyledSemester.PopupContent>
+           <StyledSemester.PopupTitle>
+          <StyledSemester.Popuptext> Chọn đề tài</StyledSemester.Popuptext>
+          <StyledSemester.Close onClick={onHide}>&times;</StyledSemester.Close>
+          </StyledSemester.PopupTitle> 
+          <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
+          <table>
+            <thead>
+              <tr>
+                <th>Mã đề tài</th>
+                <th>Tên đề tài</th>
+                <th>Tên sinh viên</th>
+                <th>Tên Môn học</th>
+                <th>Chọn</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+            {topicSelecter?.map ((item, index ) => (
+              <tr key= {index}>
+                <td>{item.maDeTai}</td>
+                <td>{item.tenDeTai}</td>
+                <td>{item.tenSinhVien}</td>
+                <td>{item.tenMonHoc}</td>
+                <td><input type="checkbox" /></td>
+              </tr>
+              ))}
+            </tbody>
+          </table>
+          </StyledSemester.PopupContent>
+        </StyledSemester.Popup>
         </StyledSemester.Body>
         
       )}

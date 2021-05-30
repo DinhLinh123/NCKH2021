@@ -2,12 +2,12 @@ import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
 import { useParams } from "react-router";
 
-import { AcctionTypes, getSubjectListSuccess } from "./action";
+import { AcctionTypes, getSubjectLists, getSubjectListSuccess } from "./action";
 
-const GET_API_SUBJECTLISTS_URL= `https://api.quanlydoan.live/api/MonHoc/` ; // ${idHocKy}
+const GET_API_SUBJECTLISTS_URL= `http://localhost:8009/api/MonHoc/` ; // ${idHocKy}
 
 
-
+//--------- get------------------------
 export function* sagaGetSubjectLists (idHocKy) {
     console.log("idHocKy.payload " + idHocKy.payload);
     try{
@@ -25,3 +25,65 @@ export function* sagaGetSubjectLists (idHocKy) {
 export function* watchSagaGetSubjectLists(){
     yield takeLatest(AcctionTypes.GET_SUBJECTLISTS, sagaGetSubjectLists);
 }
+
+//------------add------------------------------
+export function* sagaAddSubjectLists( action) {
+    console.log("saga action ", action.payload.idHocKy);
+    
+   try {
+       const reponse = yield axios.post(`${GET_API_SUBJECTLISTS_URL}${action.payload.maMonHoc}/${action.payload.tenMonHoc}/${action.payload.idHocKy}/1`);
+
+       //  yield reponse && put(addSubjectListSuccess(action.payload));
+       if(reponse) yield getSubjectLists();
+   } catch (error) {
+
+       console.log({error});
+   }
+ }
+ 
+export function* watchSagaAddSubjectLists() {
+   yield takeLatest(AcctionTypes.ADD_SUBJECTLISTS, sagaAddSubjectLists);
+ }
+
+ //------------Delete---------------------------
+
+//  export function* sagaDeleteSubjectLists(action) {
+//      console.log(action.payload);
+     
+//    try {
+//      const reponse = yield axios.delete(`${DELETE_API_SubjectList_URL}${action.payload}`);
+     
+//      if (reponse.status === 200) {
+//        yield put(deleteSubjectListSuccess(reponse));
+//      } else {
+//        yield put(deleteSubjectListError(reponse.error));
+//      }
+//    } catch (error) {
+//      console.log({ error });
+//    }
+//  }
+ 
+//  export function* watchSagaDeleteSubjectLists() {
+//    yield takeLatest(AcctionTypes.DELETE_SubjectListS, sagaDeleteSubjectLists);
+//  }
+
+ //------------PUT---------------------------------------
+
+//  export function* sagaPutSubjectLists(action) {
+//      console.log(action.payloaddata.maHocKy);
+//    try {
+//      const reponse = yield axios.put(
+//        `${DELETE_API_SubjectList_URL}${action.payloadid}/${action.payloaddata.maHocKy}/${action.payloaddata.tenHocKy}`,
+//        action.payloadid + action.payloaddata.maHocKy + action.payloaddata.tenHocKy
+//      );
+//      if (reponse) {
+//        yield put(putSubjectListsSuccess(reponse.data));
+//      }
+//    } catch (error) {
+//      console.log({ error });
+//    }
+//  }
+ 
+//  export function* watchSagaPutSubjectLists() {
+//    yield takeLatest(AcctionTypes.PUT_SubjectListS, sagaPutSubjectLists);
+//  }

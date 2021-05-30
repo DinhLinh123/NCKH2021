@@ -2,38 +2,40 @@ import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
 import { AcctionTypes, addSemesterSuccess, deleteSemesterError, deleteSemesterSuccess, getSemesters, getSemesterSuccess, putSemestersSuccess } from "./action";
 
-const GET_API_SEMESTER_URL= "https://api.quanlydoan.live/api/Hocky/GetAllHocKy";//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
-const ADD_API_SEMESTER_URL= "https://api.quanlydoan.live/api/Hocky/InsertAsyncHocKy" ;
-const DELETE_API_SEMESTER_URL= `https://api.quanlydoan.live/api/Hocky/` ; 
+const GET_API_SEMESTER_URL= "http://localhost:8009/api/Hocky/GetAllHocKy";//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
+const ADD_API_SEMESTER_URL= "http://localhost:8009/api/Hocky/InsertAsyncHocKy" ;
+
+const DELETE_API_SEMESTER_URL= `http://localhost:8009/api/Hocky/` ; 
 //const PUT_API_SEMESTER_URL= `https://quanlydoan.live/api/Hocky/` ; 
 
-var axios = require('axios');
-var qs = require('qs');
-var data = qs.stringify({
-  'client_id': 'GHMSOFTCLIENT',
-  'grant_type': 'password',
-  '': '',
-  'userName': 'linhdtt026',
-  'password': '123456',
-  'type': '0',
-  'client_secret': 'GHMSOFT' 
-});
-var config = {
-  method: 'post',
-  url: 'http://auth.quanlydoan.live/connect/token',
-  headers: { 
-    'Content-Type': 'application/x-www-form-urlencoded'
-  },
-  data : data
-};
+// var axios = require('axios');
+// var qs = require('qs');
+// var data = qs.stringify({
+//   'client_id': 'GHMSOFTCLIENT',
+//   'grant_type': 'password',
+//   '': '',
+//   'userName': 'linhdtt026',
+//   'password': '123456',
+//   'type': '0',
+//   'client_secret': 'GHMSOFT' 
+// });
+// var config = {
+//   method: 'post',
+//   url: 'http://auth.quanlydoan.live/connect/token',
+  // headers: { 
+  //   'Content-Type': 'application/x-www-form-urlencoded',
+  //   'Authorization': 'Bearer `CA6D37A1FFDD01B69B2B5CFCA615D1F7FFCF61061BC9B0CD22AF6638757EAF54`'
+  // },
+//   data : data
+// };
 
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-})
-.catch(function (error) {
-  console.log(error);
-});
+// axios(config)
+// .then(function (response) {
+//   console.log(JSON.stringify(response.data));
+// })
+// .catch(function (error) {
+//   console.log(error);
+// });
 
 //--------- get------------------------
 export function* sagaGetSemesters () {

@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import reducerLogin from "../../containers/Login/reducer";
 import reducerTeacher from "../../containers/Teachers/reducer";
 import reducerStudent from "../../containers/ChooseTopic/reducer";
 import reducerAssignReviewer from "../../containers/AssignReviewers/reducer";
@@ -13,6 +14,7 @@ import reducerListTeacherSemester from "../../containers/ListTeacherSemesters/re
 
 
 export const rootReducer = combineReducers({
+    reducerLogin,
     reducerTeacher,
     reducerStudent,
     reducerAssignReviewer,

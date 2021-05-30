@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
+import Headers from "../../layout/Header";
 import { addSemester, deleteSemesters, getSemesters, putSemesters} from "./action";
 import { StyledSemester } from "./styled";
 
@@ -11,6 +12,7 @@ import { StyledSemester } from "./styled";
 
 
 const Semester = () => {
+
 const dispatch = useDispatch();
 let match = useRouteMatch();
 
@@ -176,11 +178,14 @@ const [changeVersion1, setChangeVersion1] = useState(false);
               <td><StyledSemester.Delete onClick={() => onDeleteSemesters(item.idHocKy)}>Xóa</StyledSemester.Delete></td>
               
             </tr>
+           
             
                 )
+                
 })}
           </tbody>
         </table>
+        
         </StyledSemester.Body>
       {/* )} */}
       </div>

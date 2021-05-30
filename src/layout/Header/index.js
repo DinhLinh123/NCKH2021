@@ -32,7 +32,7 @@ const Headers = () => {
         <StyledHeader.Menu1><Link to={`${match.url}/chon-giang-vien`}>Chọn Giảng viên</Link></StyledHeader.Menu1>
         <StyledHeader.Menu1><Link to={`${match.url}/danh-sach-gvhd`}>Danh sách GVHD</Link></StyledHeader.Menu1> 
         <StyledHeader.Menu1 ><Link to={`${match.url}/danh-sach-de-tai`}>Đề tài</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to={`${match.url}/chon-de-tai-cho-GV`}>chọn đề tài cho GV</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to={`${match.url}/chon-de-tai-cho-GV`}>Phân công ĐT cho GV</Link></StyledHeader.Menu1>
         
 
         <StyledHeader.Menu1><Link to={`${match.url}/phan-bien`}>Phân công phản biện</Link></StyledHeader.Menu1>

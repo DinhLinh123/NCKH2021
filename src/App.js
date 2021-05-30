@@ -19,8 +19,10 @@ import EvaluationBoardSemesterss from "./pages/evaluationboardsemester";
 import Homess from "./pages/Home";
 import Banner from "./layout/Banner";
 import { TopicDetail } from "./containers";
+import Login from "./containers/Login";
 
 const App = () => {
+
 
   return (
     <Provider store={store}>
@@ -34,8 +36,12 @@ const App = () => {
         {/* <Headers /> */}
         <div className="main_content">
           <Switch>
-            <Route exact path="/">
-              <Semesterss/>
+          <Route exact path="/">
+              <Login/>
+            </Route>
+     {/* --------------------------------- */}        
+            <Route exact path="/hoc-ky">
+              <Semesterss />
             </Route>
     {/* --------------------------------- */}
             <Route path="/chon-giang-vien">

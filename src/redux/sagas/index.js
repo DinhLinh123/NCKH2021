@@ -5,12 +5,17 @@ import { watchSagaGetListTeacherSemesters } from "../../containers/ListTeacherSe
 import { watchSagaAddSemesters, watchSagaDeleteSemesters, watchSagaGetSemesters, watchSagaPutSemesters } from "../../containers/Semesters/saga";
 import { watchSagaGetStudents } from "../../containers/ChooseTopic/saga";
 import { watchSagaGetTopicDetails } from "../../containers/TopicDetail/saga";
-import { watchSagaGetSubjectLists } from "../../containers/SubjectLists/saga";
+import { watchSagaAddSubjectLists, watchSagaGetSubjectLists } from "../../containers/SubjectLists/saga";
 import { watchSagaGetTeachers } from "../../containers/Teachers/saga";
 import { watchSagaGetTopics } from "../../containers/Topics/saga";
+import { watchSagaAddLogins } from "../../containers/Login/saga";
 
 function* rootSaga() {
     yield all([
+        //------LOGIN------------------
+        watchSagaAddLogins(),
+
+        //---------------
         watchSagaGetTeachers(),
         watchSagaGetStudents(),
         //-----AssignReviewer---------------------
@@ -32,6 +37,7 @@ function* rootSaga() {
         // // ---- SubjectList----------------------------------
 
         watchSagaGetSubjectLists(),
+        watchSagaAddSubjectLists(),
 
         // //----- ListTeacherSemester------------
 
