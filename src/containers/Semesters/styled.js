@@ -115,4 +115,50 @@ table {
             cursor: pointer;
         }
      `,
+     LoginDiv: styled.div`
+    
+        display: flex;
+        height: 500px;
+        justify-content: center;
+        align-items: center;
+        `,
+     Login: styled.div`
+     background-color: #F0F0F0;
+    width: 35%;
+    height: 400px;
+    .button, p{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h1{
+        text-align: center;
+        color: #00008B;
+    }
+    button{
+        margin-top: 10px;
+    width: 25%;
+    height: 38px;
+    color: white;
+    background: #008080;
+    border: none;
+    font-weight: bold;
+    }
+
+        
+     `,
+     Form: styled.form`
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input{
+            margin: 15px 0;
+            width: 250px;
+            height: 30px;
+            border-radius: 8px;
+            border: 1px solid #4682B4;
+        }
+        `,
 }

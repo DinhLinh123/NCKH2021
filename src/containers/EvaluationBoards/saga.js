@@ -2,7 +2,7 @@ import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
 import { AcctionTypes, getEvaluationBoardSuccess} from "./action";
 
-const GET_API_EVELUATIONBOARDS_URL= "http://localhost:8009/api/HoiDongTotNghiep/GetAllHoiDong/" ; //https://603ced5df4333a0017b68a5c.mockapi.io/api/apiaxios
+const GET_API_EVELUATIONBOARDS_URL= "https://api.quanlydoan.live/api/HoiDongTotNghiep/GetAllHoiDong/" ; //https://603ced5df4333a0017b68a5c.mockapi.io/api/apiaxios
 
 
 

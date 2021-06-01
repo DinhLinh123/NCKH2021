@@ -6,7 +6,7 @@ export const AcctionTypes= {
 
 // -------------- ADD ---------------------
 export function addLogin(data, getPro) {
-    console.log({data},'action add HK');
+    console.log({data},'data');
     return {
       type: AcctionTypes.ADD_LOGINS,
       
@@ -16,7 +16,7 @@ export function addLogin(data, getPro) {
   }
   
   export function addLoginSuccess(success) {
-    console.log({success});
+    console.log( "success ",{success});
     return {
       type: AcctionTypes.ADD_LOGINS_SUCCESS,
       payload: success,
