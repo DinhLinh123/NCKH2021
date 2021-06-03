@@ -1,24 +1,49 @@
 import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
+//import Cookies from "universal-cookie";
+import Cookies from 'js-cookie';
 import { AcctionTypes, addSemesterSuccess, deleteSemesterError, deleteSemesterSuccess, getSemesters, getSemesterSuccess, putSemestersSuccess } from "./action";
 
 const GET_API_SEMESTER_URL= "https://api.quanlydoan.live/api/Hocky/GetAllHocKy";//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
 const ADD_API_SEMESTER_URL= "https://api.quanlydoan.live/api/Hocky/InsertAsyncHocKy" ;
 
 const DELETE_API_SEMESTER_URL= `https://api.quanlydoan.live/api/Hocky/` ; 
+// axios.get('https://example.com/getSomething', {
+//  headers: {
+//    Authorization: 'Bearer ' + token //the token is a variable which holds the token
+//  }
+// })
 
-
+// , {
+//   headers: {
+//     Authorization: 'Bearer ' + `${Cookies.get('token')}`
+//   }
+//  }
 //--------- get------------------------
-export function* sagaGetSemesters () {
-  console.log('runnnnnnnnnnnnnn');
+export function* sagaGetSemesters (action) {
+  console.log("action saga get = ", action);
+  console.log("coki get =", Cookies.get('token'));
+  
+  //const = (Cookies.get('token'));
     try{
-        const reponse = yield axios.get(GET_API_SEMESTER_URL);
-         console.log("aa"+ reponse);
-        if (reponse) {
-            yield put(getSemesterSuccess(reponse));
-        }
+      console.log("chạy vào reponsive");
+        const response = yield axios.get(GET_API_SEMESTER_URL, {
+            headers: {
+              Authorization: 'Bearer ' + `${Cookies.get('token')}`
+            }
+           });
+         console.log("aa"+ response);
+        // if (reponse) {
+        //     yield put(getSemesterSuccess(reponse));
+        // }
+        if(response) {
+          yield put({type: AcctionTypes.GET_SEMESTERS_SUCCESS})
+          console.log("chạy vào đây ",{response});
+      }
         
-    }catch(error){}
+    }catch(error){
+      console.log("lỗi = ",error);
+    }
 }
 
 export function* watchSagaGetSemesters(){
@@ -27,13 +52,14 @@ export function* watchSagaGetSemesters(){
 }
 
 //------------add------------------------------
-export function* sagaAddSemesters(action) {
-     console.log(action.payload,'saga');
+export function* sagaAddSemesters() {
+    
      
     try {
-        const reponse = yield axios.post(ADD_API_SEMESTER_URL, action.payload);
+        const reponse = yield axios.post(ADD_API_SEMESTER_URL);
 
         //  yield reponse && put(addSemesterSuccess(action.payload));
+        
         if(reponse) yield getSemesters();
     } catch (error) {
 

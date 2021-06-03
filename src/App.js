@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, useRouteMatch } from "react-router-dom";
 import Teacherss from "./pages/teacher";
 import Headers from "./layout/Header";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "./redux/store";
 import Subjectss from "./pages/subject";
 import Studentss from "./pages/student";
@@ -21,8 +21,8 @@ import Banner from "./layout/Banner";
 import { TopicDetail } from "./containers";
 import Login from "./containers/Login";
 
-const App = () => {
 
+const App = () => {
 
   return (
     <Provider store={store}>

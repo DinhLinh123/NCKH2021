@@ -29,7 +29,7 @@ export function* sagaAddLogins(action) {
            console.log("chạy vào đây ",{response});
        }
    } catch (error) {
-    yield put({type: AcctionTypes.ADD_LOGINS_ERROR, payload: error})
+    yield put({type: AcctionTypes.ADD_LOGINS_ERROR, payload: {status: 400}})
        console.log({error});
    }
  }

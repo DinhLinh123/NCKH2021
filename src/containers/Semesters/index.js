@@ -30,9 +30,11 @@ const [changeVersion1, setChangeVersion1] = useState(false);
 
   const semesterSelecter = useSelector((state) => state.reducerSemester.list);
   const isLoading = useSelector((state) => state.reducerSemester.isLoading);
+  console.log("semesterSelecter ",{semesterSelecter});
 
   useEffect(() => {
     dispatch(getSemesters());
+    
   }, [isLoading]);
 
   // const getSem = () =>{

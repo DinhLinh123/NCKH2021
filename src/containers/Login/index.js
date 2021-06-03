@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { StyledSemester } from '../Semesters/styled';
 import { addLogin } from './action';
+import Cookies from 'universal-cookie';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -16,11 +17,35 @@ const Login = () => {
     //------Selecter----------------------
     const loginSelecter = useSelector((state) => state.reducerLogin.list);
 
-    console.log("loginSelecter: ", loginSelecter.status);
+    console.log("loginSelecter: ", loginSelecter);
 
     
+  //const tokenSelecter = useSelector((state)=> state.reducerLogin.status);
+  //console.log("tokenSelecter = ", tokenSelecter);
+
+  const tokenSelecter = useSelector((state)=> state.reducerLogin.status);
+
+useEffect(() => {
+    if(tokenSelecter){
+ 
+  const cookies = new Cookies();
+  const timestamp = new Date().getTime();
+  const expire = 86400   + (60 * 60 * 24 * 1000 * 3);
+  const expireDate = new Date(expire);
+  cookies.set('myCat', 'dsfdsfdfs', { path: '/' });
+  cookies.set('token', `${tokenSelecter}`,{ path: '/' });
+  console.log(cookies.get("token")); 
+  console.log("cooki tokenSelecter ", tokenSelecter);
+
+}
+}, [tokenSelecter])
+
+
     const data= { client_id, grant_type, userName, password, client_secret }
+
+
     const dangnhap = () => {
+        console.log({userName,password});
         if(userName && password){
             
             
@@ -35,23 +60,19 @@ const Login = () => {
         
     };
 
-    // useEffect(() => {
-        {loginSelecter.map ((item) => {
-            const check = item.status;
-            console.log("check ", check);
-            if(check == 200){
+    useEffect(() => {
+        
+        
+            if(loginSelecter == 200){
                 history.replace("/hoc-ky");
                 
             }else{
+                if(loginSelecter===400)
                 alert("Tài khoản không tồn tại");
-                
+                return;
 
             }
-            
-            
-        })}
-    
-    //  }, [])
+     }, [loginSelecter])
     return (
         <StyledSemester.LoginDiv>
             <StyledSemester.Login>
@@ -61,12 +82,12 @@ const Login = () => {
                 <div>
                 <label>
                     Tên đăng nhập <br />
-                    <input placeholder="Nhập tên đăng nhập" type="text" name="name" onChange={e => setUserName(e.target.value)} />
+                    <input placeholder="Nhập tên đăng nhập" value={userName} type="text" name="name" onChange={e => setUserName(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Mật Khẩu <br />
-                    <input placeholder="Nhập mật khẩu" type="password" name="password" onChange={e => setPassWord(e.target.value)} />
+                    <input placeholder="Nhập mật khẩu" type="password" name="password" value={password} onChange={e => setPassWord(e.target.value)} />
                 </label>
                 </div>
             </StyledSemester.Form>

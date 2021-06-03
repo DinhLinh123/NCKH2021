@@ -3,6 +3,7 @@ import {AcctionTypes} from "./action";
 export const INITSTALL = {
     list: [],
     status: "",
+    isLogin: false
   };
 
   const default_list = (state = INITSTALL, action) => {
@@ -12,6 +13,7 @@ export const INITSTALL = {
             return {
                 ...state,
                 isLoading: true,
+                getLogin: true
             };
 
         case AcctionTypes.ADD_LOGINS_SUCCESS:
@@ -19,14 +21,16 @@ export const INITSTALL = {
            
             return {
                 ...state,
-                list: [...state.list, action.payload],
+                list: action.payload.status,
                 isLoading: false,
+                status: action?.payload?.data?.access_token,
             };
         case AcctionTypes.ADD_LOGINS_ERROR:
            console.log("reducer err ", {action});
             return {
                 ...state,
-                list: [action.payload.response],
+                list: action.payload.status,
+                isLoading: false,
                 
             };
 
