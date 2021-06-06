@@ -18,7 +18,7 @@ export const StyledSemester= {
 
         }
         th, td {
-            padding: 15px;
+            padding: 15px 5px;
     }
     `,
     Div: styled.div`

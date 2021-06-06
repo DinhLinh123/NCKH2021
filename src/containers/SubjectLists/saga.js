@@ -1,10 +1,12 @@
 import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
 import { useParams } from "react-router";
+import GetToken from "../Login/getToken";
+import qs from 'qs';
 
 import { AcctionTypes, getSubjectLists, getSubjectListSuccess } from "./action";
 
-const GET_API_SUBJECTLISTS_URL= `http://localhost:8009/api/MonHoc/` ; // ${idHocKy}
+const GET_API_SUBJECTLISTS_URL= `https://api.quanlydoan.live/api/MonHoc/` ; // ${idHocKy}
 
 
 //--------- get------------------------
@@ -12,11 +14,11 @@ export function* sagaGetSubjectLists (idHocKy) {
     console.log("idHocKy.payload " + idHocKy.payload);
     try{
         
-        const reponse = yield axios.get(`${GET_API_SUBJECTLISTS_URL}${idHocKy.payload}`);
+        const reponse = yield axios.get(`${GET_API_SUBJECTLISTS_URL}${idHocKy.payload}`, GetToken());
         console.log("aa"+ reponse);
         console.log(reponse.statusCode);
         if (reponse) {
-            yield put(getSubjectListSuccess(reponse));
+            yield put({type: AcctionTypes.GET_SUBJECTLISTS_SUCCESS,payload: reponse})
         }
         
     }catch(error){}
@@ -28,10 +30,11 @@ export function* watchSagaGetSubjectLists(){
 
 //------------add------------------------------
 export function* sagaAddSubjectLists( action) {
-    console.log("saga action ", action.payload.idHocKy);
+    console.log("saga action ", {action});
     
    try {
-       const reponse = yield axios.post(`${GET_API_SUBJECTLISTS_URL}${action.payload.maMonHoc}/${action.payload.tenMonHoc}/${action.payload.idHocKy}/1`);
+       const reponse = yield axios.post(`${GET_API_SUBJECTLISTS_URL}${action.payload.maMonHoc}/${action.payload.tenMonHoc}/${action.payload.idHocKy}/${action.payload.typeApprover}`,
+      action.payload.maMonHoc + action.payload.tenMonHoc + action.payload.idHocKy +  action.payload.typeApprover, GetToken());
 
        //  yield reponse && put(addSubjectListSuccess(action.payload));
        if(reponse) yield getSubjectLists();

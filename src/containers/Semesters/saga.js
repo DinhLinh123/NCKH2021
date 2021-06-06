@@ -2,10 +2,11 @@ import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
 //import Cookies from "universal-cookie";
 import Cookies from 'js-cookie';
+import GetToken from "../Login/getToken";
 import { AcctionTypes, addSemesterSuccess, deleteSemesterError, deleteSemesterSuccess, getSemesters, getSemesterSuccess, putSemestersSuccess } from "./action";
 
 const GET_API_SEMESTER_URL= "https://api.quanlydoan.live/api/Hocky/GetAllHocKy";//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
-const ADD_API_SEMESTER_URL= "https://api.quanlydoan.live/api/Hocky/InsertAsyncHocKy" ;
+const ADD_API_SEMESTER_URL= `https://api.quanlydoan.live/api/Hocky/InsertAsyncHocKy/`;
 
 const DELETE_API_SEMESTER_URL= `https://api.quanlydoan.live/api/Hocky/` ; 
 // axios.get('https://example.com/getSomething', {
@@ -27,18 +28,20 @@ export function* sagaGetSemesters (action) {
   //const = (Cookies.get('token'));
     try{
       console.log("chạy vào reponsive");
-        const response = yield axios.get(GET_API_SEMESTER_URL, {
-            headers: {
-              Authorization: 'Bearer ' + `${Cookies.get('token')}`
-            }
-           });
+        const response = yield axios.get(GET_API_SEMESTER_URL, GetToken()
+          // {
+          //   headers: {
+          //     Authorization: 'Bearer ' + `${Cookies.get('token')}`
+          //   }
+          //  }
+           );
          console.log("aa"+ response);
         // if (reponse) {
         //     yield put(getSemesterSuccess(reponse));
         // }
         if(response) {
-          yield put({type: AcctionTypes.GET_SEMESTERS_SUCCESS})
-          console.log("chạy vào đây ",{response});
+          yield put({type: AcctionTypes.GET_SEMESTERS_SUCCESS,payload: response})
+          //console.log("chạy vào đây ",{response});
       }
         
     }catch(error){
@@ -52,11 +55,12 @@ export function* watchSagaGetSemesters(){
 }
 
 //------------add------------------------------
-export function* sagaAddSemesters() {
+export function* sagaAddSemesters(action) {
+  console.log( "add= ", {action});
     
      
     try {
-        const reponse = yield axios.post(ADD_API_SEMESTER_URL);
+        const reponse = yield axios.post(`${ADD_API_SEMESTER_URL}${action.payload.maHocKy}/${action.payload.tenHocKy}`,action.payload.maHocKy + action.payload.tenHocKy,GetToken());
 
         //  yield reponse && put(addSemesterSuccess(action.payload));
         
@@ -77,7 +81,7 @@ export function* watchSagaAddSemesters() {
       console.log(action.payload);
       
     try {
-      const reponse = yield axios.delete(`${DELETE_API_SEMESTER_URL}${action.payload}`);
+      const reponse = yield axios.delete(`${DELETE_API_SEMESTER_URL}${action.payload}`,GetToken());
       
       if (reponse.status === 200) {
         yield put(deleteSemesterSuccess(reponse));
@@ -99,8 +103,8 @@ export function* watchSagaAddSemesters() {
       console.log(action.payloaddata.maHocKy);
     try {
       const reponse = yield axios.put(
-        `${DELETE_API_SEMESTER_URL}${action.payloadid}/${action.payloaddata.maHocKy}/${action.payloaddata.tenHocKy}`,
-        action.payloadid + action.payloaddata.maHocKy + action.payloaddata.tenHocKy
+        `${DELETE_API_SEMESTER_URL}${action.payloadid}/${action.payloaddata.maHocKy}/${action.payloaddata.tenHocKy}` ,
+        action.payloadid + action.payloaddata.maHocKy + action.payloaddata.tenHocKy, GetToken()
       );
       if (reponse) {
         yield put(putSemestersSuccess(reponse.data));

@@ -1,15 +1,16 @@
 import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
+import GetToken from "../Login/getToken";
 import { AcctionTypes, getTopicSuccess } from "./action";
 
-const GET_API_TOPICS_URL= `http://localhost:8009/api/DeTai/GetAllByHocKy/` ; // //https://quanlydoan.live/api
+const GET_API_TOPICS_URL= `https://api.quanlydoan.live/api/DeTai/GetAllByHocKy/` ; // //https://quanlydoan.live/api
 
 
 
 export function* sagaGetTopics (idHocKy) {
     console.log("sagaTopic" + idHocKy);
     try{
-        const reponse = yield axios.get(`${GET_API_TOPICS_URL}${idHocKy.payload}`);
+        const reponse = yield axios.get(`${GET_API_TOPICS_URL}${idHocKy.payload}`,GetToken());
         console.log(reponse.statusCode);
         if (reponse) {
             yield put(getTopicSuccess(reponse));

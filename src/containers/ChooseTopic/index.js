@@ -30,12 +30,35 @@ const Student = () => {
   }, []);
   //================Hiện chọn đề tài-------------------
 
-  const onShow =()=>{
+  const onShow =(magv)=>{
+    console.log("Mã gv : ", magv);
     setHide(false);
+    //console.log("teacherSelecter.maGVHD = ", teacherSelecter);
+    if(save.length >0){
+      try {
+        let data ={
+          iddetai : save[0],
+          idGVHD : save[1]
+        }
+        console.log("data",{data});
+        // const update =await axios.post(`https://quanlydoan.live/api/ChiTietDeTai/ChiTietDeTai/${save[0]}/${save[1]}`,data)
+        // console.log({update});                         
+      } catch (error) {
+        console.log('loi update detai');
+      }
+    }
   }
 
-  const onHide =() =>{
+  const handleChange = (selected) => {
+    console.log("đề tài được chọn ",selected); 
+    
+       
+  
+  }
+
+  const onHide =(idDT) =>{
     setHide(true);
+    
   }
 
   // let hide = document.getElementById("hide");
@@ -79,7 +102,7 @@ const Student = () => {
     return (
         <>
         <div>
-            <h1> Chọn Đề tài cho Giảng Viên {tenHocKy}</h1>
+            <h1> Phân công Đề tài cho Giảng Viên {tenHocKy}</h1>
             {isLoading ? (
         <div>Loading</div>
       ) : (
@@ -120,7 +143,7 @@ const Student = () => {
               <td><button type="submit" onClick={updateTopic}>Lưu</button></td> */}
 
               <td>
-                <button onClick={()=> onShow()}>Phân công ĐT</button>
+                <button onClick={()=> onShow(item)}>Phân công ĐT</button>
               </td>
               
                
@@ -153,7 +176,12 @@ const Student = () => {
                 <td>{item.tenDeTai}</td>
                 <td>{item.tenSinhVien}</td>
                 <td>{item.tenMonHoc}</td>
-                <td><input type="checkbox" /></td>
+                <td><input 
+                  type="checkbox" 
+                  value={item.id}
+                  id="checkbox1"
+                  onChange={()=> handleChange(item)}
+                  /></td>
               </tr>
               ))}
             </tbody>

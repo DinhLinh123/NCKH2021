@@ -14,7 +14,7 @@ const TopicDetail = () => {
 
    const dispatch = useDispatch();
    const topicDetailSelecter = useSelector((state) => state.reducerTopicDetail.list);
-    console.log("topicDetailSelecter " + topicDetailSelecter);
+    console.log("topicDetailSelecter " + topicDetailSelecter.data);
    useEffect(() => {
        dispatch(getTopicDetails(idDeTai));
      }, []);

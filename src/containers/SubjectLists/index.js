@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { Route, Switch, useParams, useRouteMatch } from 'react-router';
+import { Link } from 'react-router-dom';
+import Headers from '../../layout/Header';
 import { StyledSemester } from '../Semesters/styled';
 import { addSubjectList, getSubjectLists } from './action';
 
 const SubjectList = () => {
+  const match =useRouteMatch();
   //----------useState----------------------
   const [idMonHoc, setIdMonHoc] = useState("");
   const [maMonHoc, setMaMonHoc] = useState("");
@@ -103,9 +106,10 @@ const SubjectList = () => {
             <table>
           <thead>
             <tr>
+              <th>Xử lý thông tin</th>
               <th>Mã môn học</th>
               <th>Tên môn học</th>
-              <th>Điều kiện tiên quyết</th>
+              <th>Môn học tiên quyết</th>
               <th>Ngày tạo</th>
               <th>Hành động</th>
               <th></th>
@@ -115,10 +119,12 @@ const SubjectList = () => {
               {subjectListSelecter?.map ((item, index ) => (
 
             <tr key= {index}>
-               
+              <Link to={`${match.url}/${item?.tenMonHoc}/${item?.idMonHoc}`}>
+               <td><StyledSemester.See>Xử lý thông tin</StyledSemester.See></td>
+               </Link>
               <td>{item.maMonHoc}</td>
               <td>{item.tenMonHoc}</td>
-              <td></td>
+              <td>{item.nameMonTienQuyet}</td>
               <td>{item.ngayTao}</td>
               <td><StyledSemester.ButtonAdd>Sửa</StyledSemester.ButtonAdd></td>
               <td><StyledSemester.Delete>Xóa</StyledSemester.Delete></td>
@@ -129,8 +135,14 @@ const SubjectList = () => {
           </tbody>
         </table>
         </StyledSemester.Body>
+        <Switch>
+        <Route path={`${match.path}/:tenMonHoc/:idMonHoc`}>
+          <Headers/>
+        </Route>
+        </Switch>
         </div>
     );
 };
 
 export default SubjectList;
+

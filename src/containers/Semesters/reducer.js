@@ -31,7 +31,7 @@ const default_list = (state = INITSTALL, action) => {
            console.log({action},'reducer add hoc ky sc');
             return {
                 ...state,
-                list: [...state.list, action.payload],
+                list: [...state.list, action.payload.data.data],
                 isLoading: false,
             };
 

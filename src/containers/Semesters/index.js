@@ -15,6 +15,7 @@ const Semester = () => {
 
 const dispatch = useDispatch();
 let match = useRouteMatch();
+console.log("match.url ",match.url);
 
 const [idHocKy, setIdHocky] = useState("");
 const [maHocKy, setMaHocKy] = useState("");
@@ -50,6 +51,7 @@ const [changeVersion1, setChangeVersion1] = useState(false);
     dispatch(getSemesters())  ;
   };
 // ----------------- Thêm ---------------------
+
   const onAddSubmit = (e) => {
     console.log({maHocKy, tenHocKy});
     //const add = {maHocKy, tenHocKy };
@@ -58,15 +60,16 @@ const [changeVersion1, setChangeVersion1] = useState(false);
     if(maHocKy && tenHocKy){
       const add = {maHocKy, tenHocKy};
       if(changeVersion === true) {
-        dispatch(addSemester(add, getPro));
+        
+        dispatch(addSemester(add,getPro()));
         // debounce(dispatch(getSemesters()), 2000)
         console.log(isLoading);
         setChangeVersion1(false);
       } else{
         
-        dispatch(putSemesters(idHocKy,add, getPro));
-        dispatch(getSemesters());
-        debounce(dispatch(getSemesters()), 2000)
+        dispatch(putSemesters(idHocKy,add, getSemesters));
+        //dispatch(getSemesters());
+        // debounce(dispatch(getSemesters()), 2000)
         // dispatch(getSemesters());
         setChangeVersion(true);
       }
@@ -169,7 +172,7 @@ const [changeVersion1, setChangeVersion1] = useState(false);
                 // console.log(item);
                 return (
             <tr key= {index}>
-               <Link to={`/menu/${item?.tenHocKy}/${item?.idHocKy}`}>
+               <Link to={`/mon-hoc/${item?.tenHocKy}/${item?.idHocKy}`}>
               <td><StyledSemester.See>Xem Thông tin</StyledSemester.See></td>
               </Link>
               <td>{item?.maHocKy ?? ''}</td>

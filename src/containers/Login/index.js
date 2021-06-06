@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { StyledSemester } from '../Semesters/styled';
 import { addLogin } from './action';
-import Cookies from 'universal-cookie';
+//import Cookies from 'universal-cookie';
+import Cookies from 'js-cookie';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -32,9 +33,9 @@ useEffect(() => {
   const timestamp = new Date().getTime();
   const expire = 86400   + (60 * 60 * 24 * 1000 * 3);
   const expireDate = new Date(expire);
-  cookies.set('myCat', 'dsfdsfdfs', { path: '/' });
-  cookies.set('token', `${tokenSelecter}`,{ path: '/' });
-  console.log(cookies.get("token")); 
+  Cookies.set('myCat', 'dsfdsfdfs',  { expires: 1, path: '' });
+  Cookies.set('token', `${tokenSelecter}`, { expires: 1, path: '' });
+  console.log(Cookies.get("token")); 
   console.log("cooki tokenSelecter ", tokenSelecter);
 
 }

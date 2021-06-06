@@ -18,13 +18,14 @@ import TopicsSemesterss from "./pages/topicsemesters";
 import EvaluationBoardSemesterss from "./pages/evaluationboardsemester";
 import Homess from "./pages/Home";
 import Banner from "./layout/Banner";
-import { TopicDetail } from "./containers";
+import { Semester, SubjectList, TopicDetail } from "./containers";
 import Login from "./containers/Login";
 
 
 const App = () => {
-
+ 
   return (
+
     <Provider store={store}>
     <div className="app" >
       <div style={{margin: "0 3%", background: "#F8F8F8", paddingBottom: "100px", boxShadow: "60px 69px 60px #f0f0f0", }}> 
@@ -41,7 +42,7 @@ const App = () => {
             </Route>
      {/* --------------------------------- */}        
             <Route exact path="/hoc-ky">
-              <Semesterss />
+              <Semester />
             </Route>
     {/* --------------------------------- */}
             <Route path="/chon-giang-vien">
@@ -54,9 +55,12 @@ const App = () => {
             </Route>         */}
 
     {/* --------------------------------- */}
-            <Route path={`/menu/:tenHocKy/:idHocKy`}>
-              <Headers />
+            <Route path={`/mon-hoc/:tenHocKy/:idHocKy`}>
+              <SubjectList  />
             </Route>
+
+            
+      
 
        
 

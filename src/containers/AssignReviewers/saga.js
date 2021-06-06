@@ -1,5 +1,6 @@
 import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
+import GetToken from "../Login/getToken";
 import { AcctionTypes, deleteAssignReviewerError, deleteAssignReviewerSuccess, getAssignReviewers, getAssignReviewerSuccess, putAssignReviewersSuccess } from "./action";
 
 const GET_API_ASSIGNREVIEWER_URL= `https://api.quanlydoan.live/api/PhanBien/` ; //https://603ced5df4333a0017b68a5c.mockapi.io/api/apiaxios
@@ -9,7 +10,7 @@ const GET_API_ASSIGNREVIEWER_URL= `https://api.quanlydoan.live/api/PhanBien/` ; 
 export function* sagaGetAssignReviewers (idHocKy) {
     console.log("sagaidHocky ", idHocKy.payload);
     try{
-        const reponse = yield axios.get(`${GET_API_ASSIGNREVIEWER_URL}${idHocKy.payload}`);
+        const reponse = yield axios.get(`${GET_API_ASSIGNREVIEWER_URL}${idHocKy.payload}`,GetToken());
         console.log(reponse.statusCode);
         if (reponse) {
             yield put(getAssignReviewerSuccess(reponse));
