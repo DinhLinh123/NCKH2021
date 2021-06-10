@@ -63,10 +63,10 @@ const App = () => {
           
         </Route> */}
 
-{/* <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/mon-hoc`}>
+<Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/mon-hoc`}>
           <SubjectList /> 
          
-        </Route> */}
+        </Route>
         <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/chon-giang-vien`}>
           <Teacher />
          

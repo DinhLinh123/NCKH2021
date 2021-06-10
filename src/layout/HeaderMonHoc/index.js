@@ -36,8 +36,8 @@ const HeaderMonHoc = () => {
 
       <StyledHeader.MenuBody>
       
-        {/* <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/mon-hoc`}>Trang chủ</Link></StyledHeader.Menu1>   */}
-        <StyledHeader.Menu1><Link to={`${url}/mon-hoc`}>Môn Học</Link></StyledHeader.Menu1>   
+        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/mon-hoc`}>Trang chủ</Link></StyledHeader.Menu1>  
+        {/* <StyledHeader.Menu1><Link to={`${url}/mon-hoc`}>Môn Học</Link></StyledHeader.Menu1>    */}
         {/* <StyledHeader.Menu1><Link to={`${match.url}/chon-giang-vien`}>Chọn Giảng viên</Link></StyledHeader.Menu1>
         <StyledHeader.Menu1><Link to={`${match.url}/danh-sach-gvhd`}>Danh sách GVHD</Link></StyledHeader.Menu1>  */}
         <StyledHeader.Menu1 ><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/danh-sach-de-tai`}>Đề tài</Link></StyledHeader.Menu1>
@@ -49,9 +49,9 @@ const HeaderMonHoc = () => {
         
       </StyledHeader.MenuBody>
       <Switch>
-        <Route path={`${path}/mon-hoc`}>
+        {/* <Route path={`${path}/mon-hoc`}>
           <SubjectList />
-        </Route>
+        </Route> */}
 {/* 
         <Route path={`${match.path}/chon-giang-vien`}>
           <Teacher/>
