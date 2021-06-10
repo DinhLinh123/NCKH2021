@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch, useParams, useRouteMatch } from 'react-router';
+import { Route, Switch, useLocation, useParams, useRouteMatch } from 'react-router';
 import { Link } from 'react-router-dom';
 import Headers from '../../layout/Header';
 import { StyledSemester } from '../Semesters/styled';
@@ -14,10 +14,13 @@ const SubjectList = () => {
   const [tenMonHoc, setTenMonHoc] = useState("");
   const [typeApprover , setTypeApprover ] = useState("");
   
-
+    let test = useLocation()
+    console.log(test);
     let { idHocKy } = useParams();
     let {tenHocKy} = useParams();
     //console.log("tên học kỳ" + tenHocKy);
+    console.log(idHocKy);
+    console.log(tenHocKy);
 
     const dispatch = useDispatch();
     const subjectListSelecter = useSelector((state) => state.reducerSubjectList.list);
@@ -48,11 +51,61 @@ const SubjectList = () => {
       const onHuy = () => {
 
       }
+
+      //------------ẩn/hiện popup-------------
+      const [hide, setHide]= useState(false);
     return (
+      
         <div>
             <h1>Danh sách Môn {tenHocKy}</h1>
             <StyledSemester.Body>
-              <table>
+              
+              <StyledSemester.ButtonAdd onClick={()=> setHide(true)}>Thêm môn học</StyledSemester.ButtonAdd>
+              <StyledSemester.Popup style={hide ? {display: "block"} : {display: "none"}}>
+                <StyledSemester.PopupContent1>
+                  <StyledSemester.DivSpan>
+                <span onClick={()=> setHide(false)}>&times;</span>
+                </StyledSemester.DivSpan>
+                  <h1 >Thêm môn học</h1>
+                  <StyledSemester.DivInput>
+                    <StyledSemester.DivLable>
+                    <label>Nhập mã môn học</label>
+                  <input
+                        placeholder="Nhập mã môn học"
+                        type="text"
+                        value={maMonHoc}
+                        onChange={(maMonHoc)=>setMaMonHoc(maMonHoc.target.value)}
+                        />
+                        </StyledSemester.DivLable>
+                        <StyledSemester.DivLable>
+                   <label>Nhập tên môn học</label>
+                  <input
+                        placeholder="Nhập tên môn học"
+                        type="text"
+                        value={tenMonHoc}
+                        onChange={(tenMonHoc)=>setTenMonHoc(tenMonHoc.target.value)}
+                        />
+                        </StyledSemester.DivLable>
+                         <StyledSemester.DivLable>
+                  <label>Nhập môn học tiên quyết</label>  
+
+                 <select >
+                 {subjectListSelecter?.map ((item, index ) => (
+                   <option value={index}>
+                        {item.nameMonTienQuyet}
+                   </option>
+                    ))}
+                 </select>
+                 </StyledSemester.DivLable>
+                  
+                        <StyledSemester.DivButton>
+                  <button type="submit" onClick={() => onAddSubmit()}>
+                    Thêm
+                    </button>
+                    <button type="submit" onClick={()=> setHide(false)}>Hủy</button>
+                    </StyledSemester.DivButton>
+                    </StyledSemester.DivInput>
+              {/* <table>
                 <thead>
                   <tr>
                     <td>Thêm môn học</td>
@@ -102,7 +155,9 @@ const SubjectList = () => {
                   </td>
                 </tr>
                 </tbody>
-              </table>
+              </table> */}
+              </StyledSemester.PopupContent1>
+              </StyledSemester.Popup>
             <table>
           <thead>
             <tr>
@@ -117,11 +172,10 @@ const SubjectList = () => {
           </thead>
           <tbody>
               {subjectListSelecter?.map ((item, index ) => (
-
             <tr key= {index}>
-              <Link to={`${match.url}/${item?.tenMonHoc}/${item?.idMonHoc}`}>
+              <Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${item.tenMonHoc}/${item.idMonHoc}`}>
                <td><StyledSemester.See>Xử lý thông tin</StyledSemester.See></td>
-               </Link>
+               </Link>  
               <td>{item.maMonHoc}</td>
               <td>{item.tenMonHoc}</td>
               <td>{item.nameMonTienQuyet}</td>
@@ -133,13 +187,9 @@ const SubjectList = () => {
             </tr>
             ))}
           </tbody>
-        </table>
+        </table> 
         </StyledSemester.Body>
-        <Switch>
-        <Route path={`${match.path}/:tenMonHoc/:idMonHoc`}>
-          <Headers/>
-        </Route>
-        </Switch>
+        
         </div>
     );
 };

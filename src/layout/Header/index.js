@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { StyledHeader } from "./styled";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import { Link, Route, Switch, useParams, useRouteMatch } from "react-router-dom";
 import { AssignReviewer, AssignReviewerChoose, EvaluationBoard, ListTeacher, ListTeacherSemester, Student, Subject, SubjectList, Teacher, Topic, TopicDetail } from "../../containers";
 
 const Headers = () => {
   let match = useRouteMatch();
   console.log("match.url ",match.url);
+  let { idHocKy } = useParams();
+  let {tenHocKy} = useParams();
+  //console.log("tên học kỳ" + tenHocKy);
+  console.log(idHocKy);
+  console.log(tenHocKy);
+  
   
   return (
     // <h1>Header</h1>
@@ -29,28 +35,26 @@ const Headers = () => {
       <StyledHeader.MenuBody>
       
         <StyledHeader.Menu1><Link to='/hoc-ky'>Trang chủ</Link></StyledHeader.Menu1>  
-        {/* <StyledHeader.Menu1><Link to={`${match.url}/mon-hoc`}>Môn Học</Link></StyledHeader.Menu1>    */}
-        <StyledHeader.Menu1><Link to={`${match.url}/chon-giang-vien`}>Chọn Giảng viên</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to={`${match.url}/danh-sach-gvhd`}>Danh sách GVHD</Link></StyledHeader.Menu1> 
-        <StyledHeader.Menu1 ><Link to={`${match.url}/danh-sach-de-tai`}>Đề tài</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to={`${match.url}/chon-de-tai-cho-GV`}>Phân công ĐT cho GV</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/mon-hoc`}>Môn Học</Link></StyledHeader.Menu1>   
+        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/chon-giang-vien`}>Chọn Giảng viên</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/danh-sach-gvhd`}>Danh sách GVHD</Link></StyledHeader.Menu1> 
+        {/* <StyledHeader.Menu1 ><Link to={`${match.url}/danh-sach-de-tai`}>Đề tài</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to={`${match.url}/chon-de-tai-cho-GV`}>Phân công ĐT cho GV</Link></StyledHeader.Menu1> */}
         
-        <StyledHeader.Menu1><Link to={`${match.url}/phan-cong-phan-bien`}>Phân công phản biện</Link></StyledHeader.Menu1>
+        {/* <StyledHeader.Menu1><Link to={`${match.url}/phan-cong-phan-bien`}>Phân công phản biện</Link></StyledHeader.Menu1>
         <StyledHeader.Menu1><Link to={`${match.url}/phan-bien`}>Danh sách phản biện</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to={`${match.url}/hoi-dong-tot-nghiep`}>Hội đồng tốt nghiệp</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to={`${match.url}/hoi-dong-tot-nghiep`}>Hội đồng tốt nghiệp</Link></StyledHeader.Menu1> */}
         
       </StyledHeader.MenuBody>
       <Switch>
-        {/* <Route path={`${match.path}/mon-hoc`}>
-          <SubjectList />
-        </Route> */}
-
-        <Route path={`${match.path}/chon-giang-vien`}>
+        
+      
+        {/* <Route path={`${match.path}chon-giang-vien`}>
           <Teacher/>
-        </Route>
-        <Route path={`${match.path}/danh-sach-gvhd`}>
+        </Route> */}
+        {/* <Route path={`${match.path}danh-sach-gvhd`}>
           <ListTeacherSemester/>
-        </Route>
+        </Route> */}
         <Route path={`${match.path}/chon-de-tai-cho-GV`}>
           <Student/>
         </Route>

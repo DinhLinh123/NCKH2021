@@ -102,6 +102,77 @@ table {
         animation-name: animatetop;
         animation-duration: 0.4s
      `,
+     PopupContent1: styled.div`
+     h1{
+        text-align: center;
+    font-size: 29px;
+    color: #006699;
+     };
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 35%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+        
+     `,
+     DivInput: styled.div`
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    input, select{
+        margin-bottom: 20px;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid white;
+        background: #F5F5F5;
+        &::placeholder{
+            padding-left: 15px;
+            font-size: 15px;
+            
+        }
+        &:focus{
+            border: 1px hidden #C8C8C8;
+            background: white;
+        }
+    }
+
+     `,
+     DivLable:styled.div`
+     width: 70%;
+     display: flex;
+     flex-direction: column;
+    
+     label{
+        margin: 0 0 10px 15px;
+     }
+     
+     `,
+     DivSpan: styled.div`
+     display: flex;
+     justify-content: flex-end;
+     span{
+        font-size: 25px;
+    margin: 0 20px -28px 0;
+    font-weight: 900;
+    cursor: pointer;
+     }
+
+     `,
+     DivButton: styled.div`
+        margin-bottom: 25px;
+        button{
+            margin: 0 15px;
+            cursor: pointer;
+        }
+     `,
 
      Close: styled.span`
         flex: 5%;

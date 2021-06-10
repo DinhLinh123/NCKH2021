@@ -115,8 +115,48 @@ const [changeVersion1, setChangeVersion1] = useState(false);
         <StyledSemester.Body>
           <div>
             <StyledSemester.ButtonAdd className="bottom" type="submit" onClick={() => onAdd()}>Thêm học kỳ</StyledSemester.ButtonAdd>
-            
-            <table style={changeVersion1 ? {display: "block"} : {display: "none"}}>
+            <StyledSemester.Popup style={changeVersion1 ? {display: "block"} : {display: "none"}}>
+                <StyledSemester.PopupContent1>
+                  <StyledSemester.DivSpan>
+                <span onClick={()=> setChangeVersion1(false)}>&times;</span>
+                </StyledSemester.DivSpan>
+                  <h1 >{changeVersion ? "Thêm Học kỳ" : "Sửa học kỳ"}</h1>
+                  <StyledSemester.DivInput>
+                    <StyledSemester.DivLable>
+                    <label>Nhập mã học kỳ</label>
+                    <input
+                      placeholder="Nhập mã học kỳ"
+                      type="text"
+                      value={maHocKy}
+                      onChange={(maHocKy) => setMaHocKy(maHocKy.target.value)}
+                    />
+                        </StyledSemester.DivLable>
+                        <StyledSemester.DivLable>
+                   <label>Nhập tên học kỳ</label>
+                   <input
+                      placeholder="Nhập tên học kỳ"
+                      value={tenHocKy}
+                      type="text"
+                      onChange={(tenHocKy) => setTenHocKy(tenHocKy.target.value)}
+                    />
+                        </StyledSemester.DivLable>
+                         <StyledSemester.DivLable>
+                  
+                 </StyledSemester.DivLable>
+                  
+                        <StyledSemester.DivButton>
+                  <button type="submit" onClick={() => onAddSubmit()}>
+                  {changeVersion ? "Thêm" : "Sửa"}
+                    </button>
+                    <button type="submit" onClick={()=> setChangeVersion1(false)}>Hủy</button>
+                    </StyledSemester.DivButton>
+                    </StyledSemester.DivInput>
+                    </StyledSemester.PopupContent1>
+              </StyledSemester.Popup>
+
+
+
+            {/* <table style={changeVersion1 ? {display: "block"} : {display: "none"}}>
             <thead>
                 <tr>
                   <td>{changeVersion ? "Thêm Học kỳ" : "Sửa học kỳ"}</td>
@@ -153,7 +193,7 @@ const [changeVersion1, setChangeVersion1] = useState(false);
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table> */}
           </div>
         <table>
           <thead>
