@@ -9,6 +9,7 @@ import { getTopics } from './action';
 const Topic = () => {
   let { idHocKy } = useParams();
   let {tenHocKy} = useParams();
+  let {idMonHoc} =useParams();
   //-----------------------------------
   console.log("tên học kỳ" + tenHocKy);
 
@@ -19,7 +20,8 @@ const Topic = () => {
   const [hide, setHide] = useState(false);
   
 useEffect(() => {
-      dispatch(getTopics(idHocKy));
+      dispatch(getTopics(idHocKy,idMonHoc));
+     
       
     }, []);
 

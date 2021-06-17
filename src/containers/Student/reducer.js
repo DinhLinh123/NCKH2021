@@ -5,26 +5,24 @@ export const INITSTALL = {
   };
 
 const default_list = (state = INITSTALL, action) => {
-    console.log("action ", action);
     switch(action.type){
-        case AcctionTypes.GET_TOPICS: 
+        //---------- GetAPI-------------------
+        case AcctionTypes.GET_STUDENT: 
             return{
                 ...state,
                 isLoading: false,
             };
         
-        case AcctionTypes.GET_TOPICS_SUCCESS:
+        case AcctionTypes.GET_STUDENT_SUCCESS:
+            console.log({action},'reducer get student sc');
             return {
                 ...state,
                 list: action.payload.data.data,
                 isLoading: false,
             };
-
-        default:
-            return state;
-    }
-};
-
-export default default_list;
-
-//==================
+            default:
+                return state;
+        }
+    };
+    
+    export default default_list;

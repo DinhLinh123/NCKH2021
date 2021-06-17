@@ -38,6 +38,7 @@ const Headers = () => {
         <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/mon-hoc`}>Môn Học</Link></StyledHeader.Menu1>   
         <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/chon-giang-vien`}>Chọn Giảng viên</Link></StyledHeader.Menu1>
         <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/danh-sach-gvhd`}>Danh sách GVHD</Link></StyledHeader.Menu1> 
+        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/danh-sach-sinhvien`}>Danh sách Sinh viên</Link></StyledHeader.Menu1>
         {/* <StyledHeader.Menu1 ><Link to={`${match.url}/danh-sach-de-tai`}>Đề tài</Link></StyledHeader.Menu1>
         <StyledHeader.Menu1><Link to={`${match.url}/chon-de-tai-cho-GV`}>Phân công ĐT cho GV</Link></StyledHeader.Menu1> */}
         

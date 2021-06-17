@@ -12,6 +12,7 @@ import { AssignReviewer, AssignReviewerChoose, EvaluationBoard, ListTeacherSemes
 import Login from "./containers/Login";
 
 import HeaderMonHoc from "./layout/HeaderMonHoc";
+import StudentList from "./containers/Student";
 
 
 const App = () => {
@@ -75,25 +76,29 @@ const App = () => {
           <ListTeacherSemester />
           
         </Route>
+        <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/danh-sach-sinhvien`}>
+          <StudentList />
+          
+        </Route>
           
           
-    <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc`}>
+    <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover`}>
             <HeaderMonHoc />
           </Route>
 
-          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/danh-sach-de-tai`}>
+          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/danh-sach-de-tai`}>
             <Topic/>
           </Route>
-          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/chon-de-tai-cho-GV`}>
+          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/chon-de-tai-cho-GV`}>
             <Student/>
           </Route>
-          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/phan-cong-phan-bien`}>
+          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/phan-cong-phan-bien`}>
             <AssignReviewerChoose/>
           </Route>
-          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/phan-bien`}>
+          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/phan-bien`}>
             <AssignReviewer/>
           </Route>
-          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/hoi-dong-tot-nghiep`}>
+          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/hoi-dong-tot-nghiep`}>
             <EvaluationBoard/>
           </Route>
            

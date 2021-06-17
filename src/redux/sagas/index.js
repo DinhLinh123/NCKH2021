@@ -9,6 +9,8 @@ import { watchSagaAddSubjectLists, watchSagaGetSubjectLists } from "../../contai
 import { watchSagaGetTeachers } from "../../containers/Teachers/saga";
 import { watchSagaGetTopics } from "../../containers/Topics/saga";
 import { watchSagaAddLogins } from "../../containers/Login/saga";
+import { watchSagaGetStudentList } from "../../containers/Student/saga";
+//import {watchSagaGetStudentList} from "../../containers/Student/saga";
 
 function* rootSaga() {
     yield all([
@@ -42,6 +44,10 @@ function* rootSaga() {
         // //----- ListTeacherSemester------------
 
         watchSagaGetListTeacherSemesters(),
+
+        //========student list-----------------
+
+        watchSagaGetStudentList(),
         
      
     ]);

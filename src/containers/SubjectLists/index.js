@@ -173,7 +173,7 @@ const SubjectList = () => {
           <tbody>
               {subjectListSelecter?.map ((item, index ) => (
             <tr key= {index}>
-              <Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${item.tenMonHoc}/${item.idMonHoc}`}>
+              <Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${item.tenMonHoc}/${item.idMonHoc}/${item.typeApprover}`}>
                <td><StyledSemester.See>Xử lý thông tin</StyledSemester.See></td>
                </Link>  
               <td>{item.maMonHoc}</td>

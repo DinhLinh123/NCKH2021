@@ -13,6 +13,7 @@ const HeaderMonHoc = () => {
 
   let {idMonHoc} = useParams();
   let {tenMonHoc} = useParams();
+  let{typeApprover}= useParams();
 
   
   return (
@@ -40,12 +41,12 @@ const HeaderMonHoc = () => {
         {/* <StyledHeader.Menu1><Link to={`${url}/mon-hoc`}>Môn Học</Link></StyledHeader.Menu1>    */}
         {/* <StyledHeader.Menu1><Link to={`${match.url}/chon-giang-vien`}>Chọn Giảng viên</Link></StyledHeader.Menu1>
         <StyledHeader.Menu1><Link to={`${match.url}/danh-sach-gvhd`}>Danh sách GVHD</Link></StyledHeader.Menu1>  */}
-        <StyledHeader.Menu1 ><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/danh-sach-de-tai`}>Đề tài</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/chon-de-tai-cho-GV`}>Phân công ĐT cho GV</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1 ><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/danh-sach-de-tai`}>Đề tài</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/chon-de-tai-cho-GV`}>Phân công ĐT cho GV</Link></StyledHeader.Menu1>
         
-        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/phan-cong-phan-bien`}>Phân công phản biện</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/phan-bien`}>Danh sách phản biện</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/hoi-dong-tot-nghiep`}>Hội đồng tốt nghiệp</Link></StyledHeader.Menu1>
+        {/* <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/phan-cong-phan-bien`}>Phân công phản biện</Link></StyledHeader.Menu1> */}
+        <StyledHeader.Menu1 style={typeApprover<=0 ? {display: "none"} : {display: "block"}}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/phan-bien`}>Danh sách phản biện</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1 style={typeApprover<=1 ? {display: "none"} : {display: "block"}}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/hoi-dong-tot-nghiep`}>Hội đồng tốt nghiệp</Link></StyledHeader.Menu1>
         
       </StyledHeader.MenuBody>
       <Switch>
