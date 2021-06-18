@@ -2,26 +2,27 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router";
+import HeaderMonHoc from "../../layout/HeaderMonHoc";
 import { StyledSemester } from "../Semesters/styled";
 import { getEvaluationBoards } from "./action";
 
 const EvaluationBoard= () => {
    const dispatch = useDispatch();
-  // const [maGiangVien, setMaGiangVien] = useState("");
-  // const [hoTen, setHoTen] = useState("");
-  // const [donViCongTac, setDonViCongTac] = useState("");
-  // const [dienThoai, setDienThoai] = useState("");
-
+   let {idHocKy} = useParams();
   const evaluationBoardSelecter = useSelector((state) => state.reducerEvaluationBoard.list);
   const isLoading = useSelector((state) => state.reducerEvaluationBoard.isLoading);
-
+console.log("evaluationBoardSelecter = " , evaluationBoardSelecter);
   useEffect(() => {
-    dispatch(getEvaluationBoards());
+    dispatch(getEvaluationBoards(idHocKy));
   }, []);
 
   return (
     <>
-    <div>
+    <StyledSemester.Flex>
+    <div><HeaderMonHoc /></div>
+    <div className="Body">
+      <div>
       <h1>Danh sách Hội đồng tốt nghiệp</h1>
       {isLoading ? (
         <div>Loading</div>
@@ -32,12 +33,11 @@ const EvaluationBoard= () => {
             <tr>
               <th>Mã hội đồng</th>
               <th>Tên hội đồng</th>
-              <th>Mã đề tài</th>
-              <th>Tên đề tài</th>
+              <th>Tên Môn học</th>
+              
               <th>Tên học kỳ</th>
-              <th>Điểm hội đồng</th>
-              <th>Nhận xét</th>
-              <th>Ngày tạo</th>
+              
+              
               <th>Hành động</th>
               <th></th>
             </tr>
@@ -46,14 +46,13 @@ const EvaluationBoard= () => {
               {evaluationBoardSelecter?.map ((item, index ) => (
 
             <tr key= {index}>
-              <td>{item.MaHoiDong}</td>
-              <td>{item.TenHoiDong}</td>
-              <td>{item.MaDeTai}</td>
-              <td>{item.TenDeTai}</td>
-              <td>{item.TenHocKy}</td>
-              <td>{item.DiemHoiDong}</td>
-              <td>{item.NhanXet}</td>
-              <td>{item.NgayTao}</td>
+              <td>{item.maHoiDong}</td>
+              <td>{item.tenHoiDong}</td>
+              <td>{item.tenMonHoc}</td>
+              
+              <td>{item.tenHocKy}</td>
+              
+              
               <td><StyledSemester.ButtonAdd>sửa</StyledSemester.ButtonAdd></td>
               <td><StyledSemester.Delete>xóa</StyledSemester.Delete></td>
               
@@ -64,6 +63,8 @@ const EvaluationBoard= () => {
         </StyledSemester.Body>
       )}
       </div>
+      </div>
+      </StyledSemester.Flex>
     </>
   );
 };

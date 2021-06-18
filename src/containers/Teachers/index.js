@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import Headers from "../../layout/Header";
 import { getSemesters } from "../Semesters/action";
 import { StyledSemester } from "../Semesters/styled";
 import { getTeachers } from "./action";
@@ -45,7 +46,10 @@ const Teacher = () => {
 
   return (
     <>
-    <div>
+    <StyledSemester.Flex>
+    <div><Headers /></div>
+    <div className="Body">
+      <div>
       <h1>Chọn Giảng giảng viên Hướng dẫn Kỳ</h1>
 
       {isLoading ? (
@@ -86,6 +90,8 @@ const Teacher = () => {
         </StyledSemester.Body>
       )}
       </div>
+      </div>
+      </StyledSemester.Flex>
     </>
   );
 };

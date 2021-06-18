@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams, useRouteMatch } from 'react-router';
 import { Link, } from 'react-router-dom';
+import HeaderMonHoc from '../../layout/HeaderMonHoc';
 import { StyledSemester } from '../Semesters/styled';
 import TopicDetail from '../TopicDetail';
 import { getTopics } from './action';
@@ -45,7 +46,10 @@ useEffect(() => {
      //setHide(false);
      
   return (
-    <div>
+    <StyledSemester.Flex>
+    <div><HeaderMonHoc /></div>
+    <div className="Body">
+      <div>
       
       <div style={hide ? {display: "block"} : {display: "none"}}>
       {/* {topicSelecter?.map ((item, index ) => ( */}
@@ -106,6 +110,8 @@ useEffect(() => {
           <TopicDetail />
         </Route>
     </div>
+    </div>
+    </StyledSemester.Flex>
   );
 };
 

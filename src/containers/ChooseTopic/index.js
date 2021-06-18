@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import HeaderMonHoc from '../../layout/HeaderMonHoc';
 import { getLisTeacherSemesters } from '../ListTeacherSemesters/action';
 import { StyledSemester } from '../Semesters/styled';
 import { getTopics } from '../Topics/action';
@@ -101,7 +102,10 @@ const Student = () => {
   }
     return (
         <>
-        <div>
+        <StyledSemester.Flex>
+        <div><HeaderMonHoc /></div>
+        <div className="Body">
+          <div>
             <h1> Phân công Đề tài cho Giảng Viên {tenHocKy}</h1>
             {isLoading ? (
         <div>Loading</div>
@@ -192,6 +196,8 @@ const Student = () => {
         
       )}
       </div>
+      </div>
+      </StyledSemester.Flex>
         </>
     );
 };

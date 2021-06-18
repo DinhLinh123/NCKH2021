@@ -17,15 +17,20 @@ export const StyledHeader= {
         justify-content: center;
         //text-decoration: none;
        //width: 15%;
-       margin-right: 80px;
-       width: 245px;
+       margin-right: 30px;
+       width: 170px;
+       margin-top: 37px;
         
     `,
     Menu1: styled.div `
+    
         width: 100%;
         height: 50px;
         line-height: 50px;
         border-bottom: 1px solid #E8E8E8;
+        span{
+            padding-left: 8px;
+        }
         
         a {
             text-decoration: none;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import Headers from '../../layout/Header';
 import { StyledSemester } from '../Semesters/styled';
 import { getStudents } from './action';
 
@@ -22,7 +23,12 @@ const StudentList = () => {
   }, []);
   const StudentListSelecter = useSelector((state) => state.reducerStudentList.list);
     return (
-        <div>
+      < >
+      <StyledSemester.Flex>
+      <div><Headers /></div>
+        <div className="Body">
+          <div>
+          
             <h1>Danh sách Sinh viên</h1>
             <StyledSemester.Body>
             <table>
@@ -60,6 +66,9 @@ const StudentList = () => {
         
         </StyledSemester.Body>
         </div>
+        </div>
+        </StyledSemester.Flex>
+        </>
     );
 };
 

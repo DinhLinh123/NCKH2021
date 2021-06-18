@@ -13,9 +13,10 @@ const default_list = (state = INITSTALL, action) => {
             };
         
         case AcctionTypes.GET_EVALUATIONBOARDS_SUCCESS:
+            console.log("action ",action);
             return {
                 ...state,
-                list: action.payload.data,
+                list: action.payload.data.data,
                 isLoading: false,
             };
 

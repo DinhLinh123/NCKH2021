@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FcPrevious } from 'react-icons/fc';
 
 import { Link, Route, Switch, useParams, useRouteMatch } from "react-router-dom";
 import { AssignReviewer, AssignReviewerChoose, EvaluationBoard, ListTeacher, ListTeacherSemester, Student, Subject, SubjectList, Teacher, Topic, TopicDetail } from "../../containers";
@@ -37,7 +38,7 @@ const HeaderMonHoc = () => {
 
       <StyledHeader.MenuBody>
       
-        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/mon-hoc`}>Trang chủ</Link></StyledHeader.Menu1>  
+        <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/mon-hoc`}><FcPrevious /><span>Môn học</span></Link></StyledHeader.Menu1>  
         {/* <StyledHeader.Menu1><Link to={`${url}/mon-hoc`}>Môn Học</Link></StyledHeader.Menu1>    */}
         {/* <StyledHeader.Menu1><Link to={`${match.url}/chon-giang-vien`}>Chọn Giảng viên</Link></StyledHeader.Menu1>
         <StyledHeader.Menu1><Link to={`${match.url}/danh-sach-gvhd`}>Danh sách GVHD</Link></StyledHeader.Menu1>  */}

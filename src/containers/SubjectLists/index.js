@@ -55,8 +55,11 @@ const SubjectList = () => {
       //------------ẩn/hiện popup-------------
       const [hide, setHide]= useState(false);
     return (
-      
-        <div>
+      <StyledSemester.Flex>
+      <div><Headers/></div>
+        <div className="Body">
+          <div>
+          
             <h1>Danh sách Môn {tenHocKy}</h1>
             <StyledSemester.Body>
               
@@ -191,6 +194,8 @@ const SubjectList = () => {
         </StyledSemester.Body>
         
         </div>
+        </div>
+        </StyledSemester.Flex>
     );
 };
 

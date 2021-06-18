@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyledHeader } from "./styled";
 import { Link, Route, Switch, useParams, useRouteMatch } from "react-router-dom";
 import { AssignReviewer, AssignReviewerChoose, EvaluationBoard, ListTeacher, ListTeacherSemester, Student, Subject, SubjectList, Teacher, Topic, TopicDetail } from "../../containers";
+import { FcPrevious } from 'react-icons/fc';
 
 const Headers = () => {
   let match = useRouteMatch();
@@ -34,7 +35,7 @@ const Headers = () => {
 
       <StyledHeader.MenuBody>
       
-        <StyledHeader.Menu1><Link to='/hoc-ky'>Trang chủ</Link></StyledHeader.Menu1>  
+        <StyledHeader.Menu1><Link to='/hoc-ky'><FcPrevious /><span>Học Kỳ</span></Link></StyledHeader.Menu1>  
         <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/mon-hoc`}>Môn Học</Link></StyledHeader.Menu1>   
         <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/chon-giang-vien`}>Chọn Giảng viên</Link></StyledHeader.Menu1>
         <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/danh-sach-gvhd`}>Danh sách GVHD</Link></StyledHeader.Menu1> 

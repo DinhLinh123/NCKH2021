@@ -46,24 +46,11 @@ const App = () => {
 
     {/* --------------------------------- */}
     <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy`}>
-            {/* <HiepPage /> */}
-            {/* <SubjectList  /> */}
-            <Headers />
+            
+            <SubjectList />
             </Route>
 
-            {/* <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/mon-hoc`}>
-          <SubjectList /> 
-         
-        </Route>
-        <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/chon-giang-vien`}>
-          <Teacher />
-         
-        </Route>
-        <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/danh-sach-gvhd`}>
-          <ListTeacherSemester />
-          
-        </Route> */}
-
+            
 <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/mon-hoc`}>
           <SubjectList /> 
          
@@ -83,7 +70,7 @@ const App = () => {
           
           
     <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover`}>
-            <HeaderMonHoc />
+            <Topic />
           </Route>
 
           <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/danh-sach-de-tai`}>

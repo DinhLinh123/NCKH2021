@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
+import HeaderMonHoc from "../../layout/HeaderMonHoc";
 import { StyledSemester } from "../Semesters/styled";
 import { getAssignReviewers} from "./action";
 
@@ -44,7 +45,10 @@ const OnPutSemesters = (idPhanBien, item) =>{
 
   return (
     <>
-    <div>
+    <StyledSemester.Flex>
+    <div><HeaderMonHoc /></div>
+    <div className="Body">
+      <div>
       <h1>Danh sách phân công phản biện {tenHocKy}</h1>
       {isLoading ? (
         <div>Loading</div>
@@ -125,6 +129,8 @@ const OnPutSemesters = (idPhanBien, item) =>{
         </StyledSemester.Body>
       )}
       </div>
+      </div>
+      </StyledSemester.Flex>
     </>
   );
 };

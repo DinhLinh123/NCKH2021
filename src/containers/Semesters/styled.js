@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
 export const StyledSemester= {
+    Flex: styled.div`
+        display: flex;
+        .Body{
+            width: 86%;
+    display: flex;
+    justify-content: center;
+        }
+    `,
     ButtonAdd: styled.button`
         background: #66CDAA;
         padding: 10px;
