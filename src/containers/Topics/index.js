@@ -10,7 +10,11 @@ import { getTopics } from './action';
 const Topic = () => {
   let { idHocKy } = useParams();
   let {tenHocKy} = useParams();
+  let {tenMonHoc} =useParams();
   let {idMonHoc} =useParams();
+  let {typeApprover} =useParams();
+  
+
   //-----------------------------------
   console.log("tên học kỳ" + tenHocKy);
 
@@ -95,7 +99,7 @@ useEffect(() => {
               <td>{item.nguoiTao}</td>
               <td><StyledSemester.ButtonAdd>Sửa</StyledSemester.ButtonAdd></td>
               <td><StyledSemester.Delete>Xóa</StyledSemester.Delete></td>
-              <td><StyledSemester.See onClick={()=>onHide()}><Link to={`${match.url}/${item?.idDeTai}`}>Chi tiết ĐT</Link></StyledSemester.See></td>
+              <td><StyledSemester.See onClick={()=>onHide()}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/${item?.idDeTai}`}>Chi tiết ĐT</Link></StyledSemester.See></td>
               
               
             </tr>
@@ -106,9 +110,7 @@ useEffect(() => {
         
         </StyledSemester.Body>
         </div>
-        <Route exact path={`${match.url}/:idDeTai`}>
-          <TopicDetail />
-        </Route>
+        
     </div>
     </div>
     </StyledSemester.Flex>
