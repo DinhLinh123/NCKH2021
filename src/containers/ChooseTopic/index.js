@@ -147,7 +147,7 @@ const Student = () => {
               <td><button type="submit" onClick={updateTopic}>Lưu</button></td> */}
 
               <td>
-                <button onClick={()=> onShow(item)}>Phân công ĐT</button>
+                <StyledSemester.See onClick={()=> onShow(item)}>Phân công ĐT</StyledSemester.See>
               </td>
               
                
@@ -157,11 +157,14 @@ const Student = () => {
         </table>
         <StyledSemester.Popup id="hide" style={hide ? {display: "none"} : {display: "block"}} >
           <StyledSemester.PopupContent>
+          <div className="Divpopup">
            <StyledSemester.PopupTitle>
           <StyledSemester.Popuptext> Chọn đề tài</StyledSemester.Popuptext>
           <StyledSemester.Close onClick={onHide}>&times;</StyledSemester.Close>
           </StyledSemester.PopupTitle> 
-          <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
+          <div className="save">
+            <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
+          </div>
           <table>
             <thead>
               <tr>
@@ -190,6 +193,7 @@ const Student = () => {
               ))}
             </tbody>
           </table>
+          </div>
           </StyledSemester.PopupContent>
         </StyledSemester.Popup>
         </StyledSemester.Body>

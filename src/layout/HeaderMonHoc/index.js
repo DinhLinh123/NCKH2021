@@ -46,8 +46,8 @@ const HeaderMonHoc = () => {
         <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/chon-de-tai-cho-GV`}>Phân công ĐT cho GV</Link></StyledHeader.Menu1>
         
         {/* <StyledHeader.Menu1><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/phan-cong-phan-bien`}>Phân công phản biện</Link></StyledHeader.Menu1> */}
-        <StyledHeader.Menu1 style={typeApprover<=0 ? {display: "none"} : {display: "block"}}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/phan-bien`}>Danh sách phản biện</Link></StyledHeader.Menu1>
-        <StyledHeader.Menu1 style={typeApprover<=1 ? {display: "none"} : {display: "block"}}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/hoi-dong-tot-nghiep`}>Hội đồng tốt nghiệp</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1 style={typeApprover<2 ? {display: "none"} : {display: "block"}}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/phan-bien`}>Danh sách phản biện</Link></StyledHeader.Menu1>
+        <StyledHeader.Menu1 style={typeApprover<1 ? {display: "none"} : {display: "block"}}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/hoi-dong-tot-nghiep`}>Hội đồng tốt nghiệp</Link></StyledHeader.Menu1>
         
       </StyledHeader.MenuBody>
       <Switch>

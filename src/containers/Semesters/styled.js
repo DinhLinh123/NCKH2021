@@ -13,6 +13,7 @@ export const StyledSemester= {
         background: #66CDAA;
         padding: 10px;
         border: none;
+        border-radius: 5px;
     `,
     Body: styled.div`
     
@@ -39,6 +40,7 @@ export const StyledSemester= {
         padding: 10px;
         border: none;
         color: white;
+        border-radius: 5px;
         a {
             text-decoration: none;
             color: white;
@@ -49,6 +51,7 @@ export const StyledSemester= {
         padding: 10px;
         border: none;
         color: white;
+        border-radius: 5px;
     `,
     Save: styled.button`
         background: #32CD32	;
@@ -58,6 +61,7 @@ export const StyledSemester= {
         width: 80px;
         margin-right: 10px;
         margin-bottom: 10px;
+        border-radius: 5px;
     `,
 
     Popup: styled.div`
@@ -108,7 +112,16 @@ table {
         -webkit-animation-name: animatetop;
         -webkit-animation-duration: 0.4s;
         animation-name: animatetop;
-        animation-duration: 0.4s
+        animation-duration: 0.4s;
+        .Divpopup{
+            padding: 0 40px 40px;
+        }
+        .save{
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 10px;
+        }
+        
      `,
      PopupContent1: styled.div`
      h1{

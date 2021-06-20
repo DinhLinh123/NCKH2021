@@ -55,7 +55,7 @@ const OnPutSemesters = (idPhanBien, item) =>{
       ) : (
         <StyledSemester.Body>
           <div>
-          <StyledSemester.ButtonAdd className="bottom" >Thêm GV phản biện</StyledSemester.ButtonAdd>
+          {/* <StyledSemester.ButtonAdd className="bottom" >Thêm GV phản biện</StyledSemester.ButtonAdd> */}
             
             <table style={changeVersion1 ? {display: "block"} : {display: "none"}}>
             <thead>
@@ -105,7 +105,6 @@ const OnPutSemesters = (idPhanBien, item) =>{
               <th>Mã đề tài</th>
               <th>Điểm</th>
               <th>Note</th>
-              <th>Ngày tạo</th>
               <th>Hành động</th>
               <th></th>
             </tr>
@@ -119,7 +118,6 @@ const OnPutSemesters = (idPhanBien, item) =>{
               <td>{item.maDeTai}</td>
               <td>{item.diem}</td>
               <td>{item.note}</td>
-              <td>{item.ngayTao}</td>
               <td><StyledSemester.ButtonAdd onClick={() => OnPutSemesters(item.idPhanBien, item)}>Sửa</StyledSemester.ButtonAdd></td>
               <td><StyledSemester.Delete >Xóa</StyledSemester.Delete></td>
             </tr>

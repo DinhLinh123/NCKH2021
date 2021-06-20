@@ -102,8 +102,8 @@ useEffect(() => {
               <th>Tên Môn học</th>
               <th>Điểm trung bình</th>
               <th>Đạt</th>
-              <th style={typeApprover==0 ? {display: "none"} : {display: "block"}}>Phân công</th>
-              <th></th>
+              <th style={typeApprover<2 ? {display: "none"} : {display: "block"}}>Phân công</th>
+              
               <th>Hành động</th>
               <th></th>
               <th>Chi tiết đề tài</th>
@@ -128,10 +128,10 @@ useEffect(() => {
                   </StyledSemester.See>
 
                 </td>
-              <td style={typeApprover < 1 ? {display: "none"} : {display: "block"}}>
+              {/* <td style={typeApprover < 1 ? {display: "none"} : {display: "block"}}>
                 <StyledSemester.See 
                  onClick={()=> onShow1(item)}>
-                  Hội đồng</StyledSemester.See></td>
+                  Hội đồng</StyledSemester.See></td> */}
               
               <td><StyledSemester.ButtonAdd>Sửa</StyledSemester.ButtonAdd></td>
               <td><StyledSemester.Delete>Xóa</StyledSemester.Delete></td>
@@ -145,11 +145,14 @@ useEffect(() => {
         </table>
         <StyledSemester.Popup id="hide" style={hide1 ? {display: "none"} : {display: "block"}} >
           <StyledSemester.PopupContent>
+          <div className="Divpopup">
            <StyledSemester.PopupTitle>
-          <StyledSemester.Popuptext> Phân công giảng viên {assign ? "phản biện" : "Hội đồng"} </StyledSemester.Popuptext>
+          <StyledSemester.Popuptext> Phân công giảng viên phản biện </StyledSemester.Popuptext>
           <StyledSemester.Close onClick={onHide}>&times;</StyledSemester.Close>
           </StyledSemester.PopupTitle> 
-          <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
+          <div className="save">
+            <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
+          </div>
           <table>
             <thead>
               <tr>
@@ -181,6 +184,7 @@ useEffect(() => {
              
             </tbody>
           </table>
+          </div>
           </StyledSemester.PopupContent>
         </StyledSemester.Popup>
         
