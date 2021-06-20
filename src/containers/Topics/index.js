@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams, useRouteMatch } from 'react-router';
 import { Link, } from 'react-router-dom';
 import HeaderMonHoc from '../../layout/HeaderMonHoc';
+import { getLisTeacherSemesters } from '../ListTeacherSemesters/action';
 import { StyledSemester } from '../Semesters/styled';
 import TopicDetail from '../TopicDetail';
 import { getTopics } from './action';
@@ -24,6 +25,7 @@ const Topic = () => {
   let match = useRouteMatch();
   const [hide, setHide] = useState(false);
   
+  
 useEffect(() => {
       dispatch(getTopics(idHocKy,idMonHoc));
      
@@ -43,11 +45,35 @@ useEffect(() => {
     //===========
 
      const onHide= ()=>{
-       setHide(true);
+       setHide1(true);
        
        
      }
      //setHide(false);
+
+
+     //------------phân công phản biện-------------
+     const [hide1, setHide1] =useState(true);
+     const teacherSelecter = useSelector((state) => state.reducerListTeacherSemester.list);
+     useEffect(() => {
+      dispatch(getLisTeacherSemesters(idHocKy));
+  }, []);
+  console.log("teacherSelecter = ", teacherSelecter);
+    const handleChange=() =>{
+      
+    } 
+  const onShow= ()=>{
+      setHide1(false);
+
+     }
+     const onShow1= ()=>{
+      setHide1(false);
+      setAssign(false);
+
+     }
+
+     //--- phân công hội đồng---------
+     const [assign, setAssign]=useState(true);
      
   return (
     <StyledSemester.Flex>
@@ -76,8 +102,8 @@ useEffect(() => {
               <th>Tên Môn học</th>
               <th>Điểm trung bình</th>
               <th>Đạt</th>
-              <th>Ngày tạo</th>
-              <th>Người tạo</th>
+              <th style={typeApprover==0 ? {display: "none"} : {display: "block"}}>Phân công</th>
+              <th></th>
               <th>Hành động</th>
               <th></th>
               <th>Chi tiết đề tài</th>
@@ -95,8 +121,18 @@ useEffect(() => {
               <td>{item.tenMonHoc}</td>
               <td>{item.diemTrungBinh}</td>
               <td>{item.isDat}</td>
-              <td>{item.ngayTao}</td>
-              <td>{item.nguoiTao}</td>
+              <td style={typeApprover < 2 ? {display: "none"} : {display: "block"}}>
+                <StyledSemester.See  
+                onClick={()=> onShow(item)}>
+                  Phản biện
+                  </StyledSemester.See>
+
+                </td>
+              <td style={typeApprover < 1 ? {display: "none"} : {display: "block"}}>
+                <StyledSemester.See 
+                 onClick={()=> onShow1(item)}>
+                  Hội đồng</StyledSemester.See></td>
+              
               <td><StyledSemester.ButtonAdd>Sửa</StyledSemester.ButtonAdd></td>
               <td><StyledSemester.Delete>Xóa</StyledSemester.Delete></td>
               <td><StyledSemester.See onClick={()=>onHide()}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/${item?.idDeTai}`}>Chi tiết ĐT</Link></StyledSemester.See></td>
@@ -107,6 +143,46 @@ useEffect(() => {
             ))}
           </tbody>
         </table>
+        <StyledSemester.Popup id="hide" style={hide1 ? {display: "none"} : {display: "block"}} >
+          <StyledSemester.PopupContent>
+           <StyledSemester.PopupTitle>
+          <StyledSemester.Popuptext> Phân công giảng viên {assign ? "phản biện" : "Hội đồng"} </StyledSemester.Popuptext>
+          <StyledSemester.Close onClick={onHide}>&times;</StyledSemester.Close>
+          </StyledSemester.PopupTitle> 
+          <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
+          <table>
+            <thead>
+              <tr>
+                <th>Mã Giảng viên</th>
+                <th>Họ tên</th>
+                <th>Đơn vị công tác</th>
+                <th>Hòm thư</th>
+                <th>Điện thoại</th>
+                <th>Chọn</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+            {teacherSelecter?.map ((item, index ) => (
+              <tr key= {index}>
+                <td>{item.maGVHD}</td>
+              <td>{item.tenGVHD}</td>
+              <td>{item.donViCongTac}</td>
+              <td>{item.email}</td>
+              <td>{item.dienThoai}</td>
+                <td><input 
+                  type="checkbox" 
+                  value={item.id}
+                  id="checkbox1"
+                  onChange={()=> handleChange(item)}
+                  /></td>
+              </tr>
+              ))}
+             
+            </tbody>
+          </table>
+          </StyledSemester.PopupContent>
+        </StyledSemester.Popup>
         
         </StyledSemester.Body>
         </div>
