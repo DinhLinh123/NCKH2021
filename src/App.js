@@ -72,9 +72,9 @@ const App = () => {
     <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover`}>
             <Topic />
           </Route>
-          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/:idDeTai`}>
+          {/* <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/:idDeTai`}>
           <TopicDetail />
-        </Route>
+        </Route> */}
 
           <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/danh-sach-de-tai`}>
             <Topic/>
