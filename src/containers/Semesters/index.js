@@ -156,44 +156,7 @@ const [changeVersion1, setChangeVersion1] = useState(false);
 
 
 
-            {/* <table style={changeVersion1 ? {display: "block"} : {display: "none"}}>
-            <thead>
-                <tr>
-                  <td>{changeVersion ? "Thêm Học kỳ" : "Sửa học kỳ"}</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <input
-                      placeholder="Nhập mã học kỳ"
-                      type="text"
-                      value={maHocKy}
-                      onChange={(maHocKy) => setMaHocKy(maHocKy.target.value)}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input
-                      placeholder="Nhập tên học kỳ"
-                      value={tenHocKy}
-                      type="text"
-                      onChange={(tenHocKy) => setTenHocKy(tenHocKy.target.value)}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <button type="submit" onClick={() => onAddSubmit()}>
-                    {changeVersion ? "Thêm" : "Sửa"}
-                    </button>
-                    <button type="submit" onClick={() => onHuy()}>Hủy</button>
-                    
-                  </td>
-                </tr>
-              </tbody>
-            </table> */}
+            
           </div>
         <table>
           <thead>
@@ -202,8 +165,8 @@ const [changeVersion1, setChangeVersion1] = useState(false);
               <th>Mã học kỳ</th>
               <th>Tên học kỳ</th>
               <th>Ngày tạo</th>
-              <th>Hành động</th>
-              <th></th>
+              <th colspan="2">Hành động</th>
+              
 
             </tr>
           </thead>

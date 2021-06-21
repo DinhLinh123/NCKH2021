@@ -11,6 +11,7 @@ import reducerSubject from "../../containers/Subjects/reducer";
 import reducerSubjectList from "../../containers/SubjectLists/reducer";
 import reducerListTeacherSemester from "../../containers/ListTeacherSemesters/reducer";
 import reducerStudentList from "../../containers/Student/reducer";
+import reducerFolder from "../../containers/Folder/reducer";
 
 
 export const rootReducer = combineReducers({
@@ -26,5 +27,6 @@ export const rootReducer = combineReducers({
     reducerListTeacherSemester,
     reducerTopicDetail,
     reducerStudentList,
+    reducerFolder,
 
   });

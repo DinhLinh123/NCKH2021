@@ -122,7 +122,7 @@ const Student = () => {
               <th>Hòm thư</th>
               <th>Điện thoại</th>
               <th>Chọn đề tài</th>
-              <th></th>
+              
             </tr>
           </thead>
           <tbody>

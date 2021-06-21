@@ -13,6 +13,7 @@ import Login from "./containers/Login";
 
 import HeaderMonHoc from "./layout/HeaderMonHoc";
 import StudentList from "./containers/Student";
+import Folder from "./containers/Folder";
 
 
 const App = () => {
@@ -91,7 +92,10 @@ const App = () => {
           <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/hoi-dong-tot-nghiep`}>
             <EvaluationBoard/>
           </Route>
-           
+          
+          <Route exact path={`/mon-hoc/:tenHocKy/:idHocKy/:tenMonHoc/:idMonHoc/:typeApprover/quan-ly-folder`}>
+            <Folder />
+            </Route>
 
           </Switch>
         </div>

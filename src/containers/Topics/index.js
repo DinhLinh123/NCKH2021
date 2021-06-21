@@ -104,8 +104,8 @@ useEffect(() => {
               <th>Đạt</th>
               <th style={typeApprover<2 ? {display: "none"} : {display: "block"}}>Phân công</th>
               
-              <th>Hành động</th>
-              <th></th>
+              <th colspan="2">Hành động</th>
+              
               <th>Chi tiết đề tài</th>
             </tr>
           </thead>

@@ -37,8 +37,8 @@ const TopicDetail = () => {
               <th>Ngày tạo</th>
               <th>Người tạo</th>
               
-              <th>Hành động</th>
-              <th></th>
+              <th colspan="2">Hành động</th>
+              
               
             </tr>
           </thead>

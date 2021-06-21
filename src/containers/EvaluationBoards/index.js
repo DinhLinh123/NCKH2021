@@ -61,8 +61,8 @@ console.log("evaluationBoardSelecter = " , evaluationBoardSelecter);
               <th>Tên học kỳ</th>
               
               <th>Phân công</th>
-              <th>Hành động</th>
-              <th></th>
+              <th colspan="2">Hành động</th>
+              
             </tr>
           </thead>
           <tbody>

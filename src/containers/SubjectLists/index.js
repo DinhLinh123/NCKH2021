@@ -169,8 +169,8 @@ const SubjectList = () => {
               <th>Tên môn học</th>
               <th>Môn học tiên quyết</th>
               <th>Ngày tạo</th>
-              <th>Hành động</th>
-              <th></th>
+              <th colspan="2">Hành động</th>
+              
             </tr>
           </thead>
           <tbody>

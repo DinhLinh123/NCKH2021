@@ -105,8 +105,8 @@ const OnPutSemesters = (idPhanBien, item) =>{
               <th>Mã đề tài</th>
               <th>Điểm</th>
               <th>Note</th>
-              <th>Hành động</th>
-              <th></th>
+              <th colspan="2">Hành động</th>
+              
             </tr>
           </thead>
           <tbody>

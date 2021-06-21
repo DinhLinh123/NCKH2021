@@ -1,6 +1,6 @@
 import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
-//import Cookies from "universal-cookie";
+
 import Cookies from 'js-cookie';
 import GetToken from "../Login/getToken";
 import { AcctionTypes, addSemesterSuccess, deleteSemesterError, deleteSemesterSuccess, getSemesters, getSemesterSuccess, putSemestersSuccess } from "./action";
@@ -9,39 +9,23 @@ const GET_API_SEMESTER_URL= "https://api.quanlydoan.live/api/Hocky/GetAllHocKy";
 const ADD_API_SEMESTER_URL= `https://api.quanlydoan.live/api/Hocky/InsertAsyncHocKy/`;
 
 const DELETE_API_SEMESTER_URL= `https://api.quanlydoan.live/api/Hocky/` ; 
-// axios.get('https://example.com/getSomething', {
-//  headers: {
-//    Authorization: 'Bearer ' + token //the token is a variable which holds the token
-//  }
-// })
 
-// , {
-//   headers: {
-//     Authorization: 'Bearer ' + `${Cookies.get('token')}`
-//   }
-//  }
 //--------- get------------------------
 export function* sagaGetSemesters (action) {
   console.log("action saga get = ", action);
   console.log("coki get =", Cookies.get('token'));
   
-  //const = (Cookies.get('token'));
+  
     try{
       console.log("chạy vào reponsive");
         const response = yield axios.get(GET_API_SEMESTER_URL, GetToken()
-          // {
-          //   headers: {
-          //     Authorization: 'Bearer ' + `${Cookies.get('token')}`
-          //   }
-          //  }
+         
            );
          console.log("aa"+ response);
-        // if (reponse) {
-        //     yield put(getSemesterSuccess(reponse));
-        // }
+        
         if(response) {
           yield put({type: AcctionTypes.GET_SEMESTERS_SUCCESS,payload: response})
-          //console.log("chạy vào đây ",{response});
+          
       }
         
     }catch(error){
