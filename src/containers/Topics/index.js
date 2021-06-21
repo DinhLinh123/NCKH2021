@@ -135,7 +135,7 @@ useEffect(() => {
               
               <td><StyledSemester.ButtonAdd>Sửa</StyledSemester.ButtonAdd></td>
               <td><StyledSemester.Delete>Xóa</StyledSemester.Delete></td>
-              <td><StyledSemester.See onClick={()=>onHide()}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/${item?.idDeTai}`}>Chi tiết ĐT</Link></StyledSemester.See></td>
+              <td><StyledSemester.See onClick={()=>onHide()}><Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/chitiet/${item?.idDeTai}`}>Chi tiết ĐT</Link></StyledSemester.See></td>
               
               
             </tr>
@@ -153,7 +153,8 @@ useEffect(() => {
           <div className="save">
             <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
           </div>
-          <table>
+          <table className="table">
+          <div className="scroll-table">
             <thead>
               <tr>
                 <th>Mã Giảng viên</th>
@@ -183,7 +184,9 @@ useEffect(() => {
               ))}
              
             </tbody>
+            </div>
           </table>
+          
           </div>
           </StyledSemester.PopupContent>
         </StyledSemester.Popup>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import HeaderMonHoc from '../../layout/HeaderMonHoc';
 import { StyledSemester } from '../Semesters/styled';
 import { getFolders } from './action';
-import { BsFolderFill } from 'react-icons/bs';
+import { FcFolder } from 'react-icons/fc';
 
 const Folder = () => {
     const dispatch = useDispatch();
@@ -12,18 +12,22 @@ const Folder = () => {
         dispatch(getFolders());
         
       }, []);
-      console.log("folderSelecter = ", folderSelecter);
+      console.log("folderSelecter.folderName = ", folderSelecter);
     return (
         <StyledSemester.Flex>
             <div><HeaderMonHoc /></div>
         <div className="Body">
         <div>
-            <h1>Quản lý các file excel</h1>
+            <h1>Quản lý các Folder</h1>
             <StyledSemester.Body>
                 {folderSelecter.map ((item, index ) => {
+                    return (
 
-                <div key={index}><BsFolderFill />{item.folderName} </div>
-})}
+                <div className="folder" key={index}>
+                    <div className="folderIcon"><FcFolder /></div>
+                    <div className="nameFolder">{item.folderName}</div> 
+                </div>
+                )})}
             </StyledSemester.Body>
         </div>
         </div>

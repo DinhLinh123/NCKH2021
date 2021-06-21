@@ -1,16 +1,16 @@
-import { AcctionTypes } from "../Semesters/action";
+import { AcctionTypes } from "../Folder/action";
 import { put, takeLatest } from "@redux-saga/core/effects";
 import axios from "axios";
 
 import Cookies from 'js-cookie';
 import GetToken from "../Login/getToken";
 
-const GET_API_FOLDER_URL= "https://api.quanlydoan.live/api/Folder/SelectAll";//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
+const GET_API_FOLDER_URL= `https://api.quanlydoan.live/api/Folder/SelectAll`;//"https://quanlydoan.live/api/Hocky/GetAllHocKy" ; 
 
 
 //--------- get------------------------
-export function* sagaGetFolders (action) {
-  console.log("action saga get = ", action);
+export function* sagaGetFolders () {
+  
   console.log("coki get =", Cookies.get('token'));
   
   

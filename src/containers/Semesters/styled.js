@@ -16,6 +16,14 @@ export const StyledSemester= {
         border-radius: 5px;
     `,
     Body: styled.div`
+        .folderIcon{
+            margin-right: 10px;
+            font-size: 27px;
+        }
+        .folder{
+            display: flex;
+            font-size: 20px;
+        }
     
         table , td, th {
             border: 1px solid #ddd;
@@ -28,6 +36,11 @@ export const StyledSemester= {
         }
         th, td {
             padding: 15px 5px;
+    }
+    .luu{
+        display: flex;
+            justify-content: flex-end;
+            padding-bottom: 10px;
     }
     `,
     Div: styled.div`
@@ -94,6 +107,7 @@ table {
     `,
     PopupTitle: styled.div`
         display: flex;
+        
     `,
     Popuptext: styled.h1`
         flex: 95%;
@@ -121,7 +135,14 @@ table {
             justify-content: flex-end;
             padding-bottom: 10px;
         }
-        
+        .scroll-table {
+        height: 450px;
+        overflow-y: auto;
+}
+.wrap table {
+  table-layout: fixed;
+  width: 100%;
+}
      `,
      PopupContent1: styled.div`
      h1{

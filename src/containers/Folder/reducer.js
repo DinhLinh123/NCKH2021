@@ -17,7 +17,7 @@ const default_list = (state = INITSTALL, action) => {
             console.log({action},'reducer get HK sc');
             return {
                 ...state,
-                list: action.payload.data.data,
+                list: action.payload.data,
                 isLoading: false,
             };
             default:

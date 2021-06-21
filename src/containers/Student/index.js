@@ -31,6 +31,7 @@ const StudentList = () => {
           
             <h1>Danh sách Sinh viên</h1>
             <StyledSemester.Body>
+              <StyledSemester.ButtonAdd>Thêm sinh viên</StyledSemester.ButtonAdd>
             <table>
           <thead>
             <tr>

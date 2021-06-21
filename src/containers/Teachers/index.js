@@ -56,6 +56,9 @@ const Teacher = () => {
         <div>Loading</div>
       ) : (
         <StyledSemester.Body>
+          <div className="luu">
+            <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
+          </div>
         <table>
           <thead>
             <tr>
@@ -64,7 +67,7 @@ const Teacher = () => {
               <th>Hòm thư</th>
               <th>Đơn vị công tác</th>
               <th>Điện thoại</th>
-              <th></th>
+              <th>Chọn</th>
             </tr>
           </thead>
           <tbody>
