@@ -60,12 +60,12 @@ const default_list = (state = INITSTALL, action) => {
                 };
 
             case AcctionTypes.PUT_SUBJECTLISTS_SUCCESS:
-                const list = state.list.filter((idHocKy) => idHocKy.idHocKy !== action.payload.idHocKy);
+                const list = state.list.filter((idMonHoc) => idMonHoc.idMonHoc !== action.payload.idMonHoc);
                 console.log({ list });
                 return {
                     ...state,
                     list: [
-                    ...state.list.filter((idHocKy) => idHocKy.idHocKy !== action.payload.idHocKy),
+                    ...state.list.filter((idMonHoc) => idMonHoc.idMonHoc !== action.payload.idMonHoc),
                     action.payload,
                     ],
                     isLoading: false,

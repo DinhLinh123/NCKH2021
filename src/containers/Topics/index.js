@@ -102,7 +102,7 @@ useEffect(() => {
               <th>Tên Môn học</th>
               <th>Điểm trung bình</th>
               <th>Đạt</th>
-              <th style={typeApprover<2 ? {display: "none"} : {display: "block"}}>Phân công</th>
+              {/* <th style={typeApprover<2 ? {display: "none"} : {display: "block"}}>Phân công</th> */}
               
               <th colspan="2">Hành động</th>
               
@@ -121,13 +121,13 @@ useEffect(() => {
               <td>{item.tenMonHoc}</td>
               <td>{item.diemTrungBinh}</td>
               <td>{item.isDat}</td>
-              <td style={typeApprover < 2 ? {display: "none"} : {display: "block"}}>
+              {/* <td style={typeApprover < 2 ? {display: "none"} : {display: "block"}}>
                 <StyledSemester.See  
                 onClick={()=> onShow(item)}>
                   Phản biện
                   </StyledSemester.See>
 
-                </td>
+                </td> */}
               {/* <td style={typeApprover < 1 ? {display: "none"} : {display: "block"}}>
                 <StyledSemester.See 
                  onClick={()=> onShow1(item)}>

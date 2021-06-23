@@ -3,6 +3,33 @@ import styled from "styled-components";
 export const StyledSemester= {
     Flex: styled.div`
         display: flex;
+        .flexFile{
+            width:100%;
+            display: flex;
+            justify-content: center;
+        }
+        .nameFile{
+            font-size: 22px;
+            
+        }
+        .divFile{
+            //margin-top: 85px;
+            display: flex;
+            justify-content:center;
+
+        }
+        .FolderFile{
+            width:40%;
+        }
+        .iconFile{
+            color: #2E8B57;
+            font-size: 30px;
+            margin-right: 10px;
+        }
+        .bodyFile{
+            display: flex;
+            margin-bottom: 15px;
+        }
         .Body{
             width: 86%;
     display: flex;

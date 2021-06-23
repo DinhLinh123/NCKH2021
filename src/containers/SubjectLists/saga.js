@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import GetToken from "../Login/getToken";
 import qs from 'qs';
 
-import { AcctionTypes, getSubjectLists, getSubjectListSuccess } from "./action";
+import { AcctionTypes, getSubjectLists, getSubjectListSuccess, putSubjectListsSuccess } from "./action";
 
 const GET_API_SUBJECTLISTS_URL= `https://api.quanlydoan.live/api/MonHoc/` ; // ${idHocKy}
 
@@ -72,21 +72,20 @@ export function* watchSagaAddSubjectLists() {
 
  //------------PUT---------------------------------------
 
-//  export function* sagaPutSubjectLists(action) {
-//      console.log(action.payloaddata.maHocKy);
-//    try {
-//      const reponse = yield axios.put(
-//        `${DELETE_API_SubjectList_URL}${action.payloadid}/${action.payloaddata.maHocKy}/${action.payloaddata.tenHocKy}`,
-//        action.payloadid + action.payloaddata.maHocKy + action.payloaddata.tenHocKy
-//      );
-//      if (reponse) {
-//        yield put(putSubjectListsSuccess(reponse.data));
-//      }
-//    } catch (error) {
-//      console.log({ error });
-//    }
-//  }
+ export function* sagaPutSubjectLists(action) {
+     console.log(action.payloaddata.maHocKy);
+   try {
+     const reponse = yield axios.put(`${GET_API_SUBJECTLISTS_URL}${action.payloadid}/${action.payloaddata.maHocKy}/${action.payloaddata.tenHocKy}`,
+       action.payloadid + action.payloaddata.maHocKy + action.payloaddata.tenHocKy,GetToken()
+     );
+     if (reponse) {
+       yield put(putSubjectListsSuccess(reponse.data));
+     }
+   } catch (error) {
+     console.log({ error });
+   }
+ }
  
-//  export function* watchSagaPutSubjectLists() {
-//    yield takeLatest(AcctionTypes.PUT_SubjectListS, sagaPutSubjectLists);
-//  }
+ export function* watchSagaPutSubjectLists() {
+   yield takeLatest(AcctionTypes.PUT_SubjectListS, sagaPutSubjectLists);
+ }

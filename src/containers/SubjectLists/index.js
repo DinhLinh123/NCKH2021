@@ -4,7 +4,7 @@ import { Route, Switch, useLocation, useParams, useRouteMatch } from 'react-rout
 import { Link } from 'react-router-dom';
 import Headers from '../../layout/Header';
 import { StyledSemester } from '../Semesters/styled';
-import { addSubjectList, getSubjectLists } from './action';
+import { addSubjectList, getSubjectLists, putSubjectLists } from './action';
 
 const SubjectList = () => {
   const match =useRouteMatch();
@@ -12,7 +12,9 @@ const SubjectList = () => {
   const [idMonHoc, setIdMonHoc] = useState("");
   const [maMonHoc, setMaMonHoc] = useState("");
   const [tenMonHoc, setTenMonHoc] = useState("");
+  const [nameMonTienQuyet, setNameMonTienQuyet] = useState("");
   const [typeApprover , setTypeApprover ] = useState("");
+  const [changeVersion, setChangeVersion] = useState(true);
   
     let test = useLocation()
     console.log(test);
@@ -24,7 +26,7 @@ const SubjectList = () => {
 
     const dispatch = useDispatch();
     const subjectListSelecter = useSelector((state) => state.reducerSubjectList.list);
-
+    console.log("subjectListSelecter ", subjectListSelecter);
     useEffect(() => {
         dispatch(getSubjectLists(idHocKy));
       }, []);
@@ -38,7 +40,13 @@ const SubjectList = () => {
         console.log({maMonHoc, tenMonHoc});
         if(maMonHoc && tenMonHoc){
           const add = {maMonHoc, tenMonHoc, idHocKy, typeApprover};
-          dispatch(addSubjectList(add, getPro));
+          if(changeVersion === true){
+            dispatch(addSubjectList(add, getPro));
+          }else{
+            dispatch(putSubjectLists(idMonHoc, add,getSubjectLists));
+            setChangeVersion(true);
+          }
+         
         }else{
           alert("vui lòng nhập thông tin");
         }
@@ -50,10 +58,26 @@ const SubjectList = () => {
 
       const onHuy = () => {
 
+      };
+      const onAdd = () => {
+        setHide(true);
+        setChangeVersion(true);
+
+      };
+      const onPut= (idMonHoc, item) => {
+        setHide(true);
+        setChangeVersion(false);
+        setIdMonHoc(idMonHoc);
+    setMaMonHoc(item.maMonHoc);
+    setTenMonHoc(item.tenMonHoc);
+    setNameMonTienQuyet(item.nameMonTienQuyet);
+    
       }
+      
 
       //------------ẩn/hiện popup-------------
       const [hide, setHide]= useState(false);
+
     return (
       <StyledSemester.Flex>
       <div><Headers/></div>
@@ -63,13 +87,13 @@ const SubjectList = () => {
             <h1>Danh sách Môn {tenHocKy}</h1>
             <StyledSemester.Body>
               
-              <StyledSemester.ButtonAdd onClick={()=> setHide(true)}>Thêm môn học</StyledSemester.ButtonAdd>
+              <StyledSemester.ButtonAdd onClick={()=> onAdd()}>Thêm môn học</StyledSemester.ButtonAdd>
               <StyledSemester.Popup style={hide ? {display: "block"} : {display: "none"}}>
                 <StyledSemester.PopupContent1>
                   <StyledSemester.DivSpan>
                 <span onClick={()=> setHide(false)}>&times;</span>
                 </StyledSemester.DivSpan>
-                  <h1 >Thêm môn học</h1>
+                  <h1 >{changeVersion ? "Thêm" : "Sửa"} môn học</h1>
                   <StyledSemester.DivInput>
                     <StyledSemester.DivLable>
                     <label>Nhập mã môn học</label>
@@ -183,7 +207,7 @@ const SubjectList = () => {
               <td>{item.tenMonHoc}</td>
               <td>{item.nameMonTienQuyet}</td>
               <td>{item.ngayTao}</td>
-              <td><StyledSemester.ButtonAdd>Sửa</StyledSemester.ButtonAdd></td>
+              <td><StyledSemester.ButtonAdd onClick={()=> onPut(item.idMonHoc, item)}>Sửa</StyledSemester.ButtonAdd></td>
               <td><StyledSemester.Delete>Xóa</StyledSemester.Delete></td>
                 
               

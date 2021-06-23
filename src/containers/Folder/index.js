@@ -4,8 +4,14 @@ import HeaderMonHoc from '../../layout/HeaderMonHoc';
 import { StyledSemester } from '../Semesters/styled';
 import { getFolders } from './action';
 import { FcFolder } from 'react-icons/fc';
+import { Link, useParams } from 'react-router-dom';
 
 const Folder = () => {
+    let { idHocKy } = useParams();
+    let {tenHocKy} = useParams();
+    let { tenMonHoc } = useParams();
+    let {idMonHoc} = useParams();
+    let {typeApprover} = useParams();
     const dispatch = useDispatch();
     const folderSelecter = useSelector((state) => state.reducerFolder.list);
     useEffect(() => {
@@ -22,11 +28,12 @@ const Folder = () => {
             <StyledSemester.Body>
                 {folderSelecter.map ((item, index ) => {
                     return (
-
+            <Link to={`/mon-hoc/${tenHocKy}/${idHocKy}/${tenMonHoc}/${idMonHoc}/${typeApprover}/quan-ly-folder/file/${item.id}`}>
                 <div className="folder" key={index}>
                     <div className="folderIcon"><FcFolder /></div>
                     <div className="nameFolder">{item.folderName}</div> 
                 </div>
+                </Link>
                 )})}
             </StyledSemester.Body>
         </div>
