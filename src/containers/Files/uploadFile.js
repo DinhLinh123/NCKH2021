@@ -1,13 +1,15 @@
 import axios from 'axios';
-import React,{Component} from 'react'; 
+import React,{Component, useState} from 'react'; 
 import { useParams } from 'react-router';
 import GetToken from '../Login/getToken';
+import Cookies from 'js-cookie';
 
 export default function ()  {
     let {id} =useParams();
     const [uploadFile, setUploadFile] = React.useState();
     const [superHero, setSuperHero] = React.useState();
     const [uploadResponse, setUploadResponse] = React.useState();
+    console.log("uploadResponse ", uploadResponse);
   
     const submitForm = (event) => {
       event.preventDefault();
@@ -19,26 +21,26 @@ export default function ()  {
       axios
         .post(`https://api.quanlydoan.live/api/File/uploads/${id}`, dataArray,GetToken() )
         .then((response) => {
-          setUploadResponse(`File uploaded successfully
+          setUploadResponse(
+            response.data
+          //   `File uploaded successfully
           
-          POST - superHeroName
-          value - ${superHero}
+          // POST - superHeroName
+          // value - ${superHero}
           
-          FILE - uploadFile`);
+          // FILE - uploadFile`
+          );
         })
         .catch((error) => {
-          setUploadResponse(`File uploaded successfully
-  
-          POST - superHeroName
-          value - ${superHero}
-          
-          FILE - uploadFile`);
+          setUploadResponse("err: ", error);
         });
     };
+
+    
     return (
         <div className="App">
       <form onSubmit={submitForm}>
-        <input
+         <input
           type="text"
           onChange={(e) => setSuperHero(e.target.value)}
           placeholder={"Superhero Name"}
@@ -50,7 +52,12 @@ export default function ()  {
       </form>
       <hr />
       <pre>{uploadResponse}</pre>
-    </div>
+
+      
+     </div>
     );
 };
+
+
+
 
