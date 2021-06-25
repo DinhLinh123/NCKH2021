@@ -48,7 +48,7 @@ export function* sagaAddSemesters(action) {
 
         //  yield reponse && put(addSemesterSuccess(action.payload));
         
-        if(reponse) yield getSemesters();
+        if(reponse) yield addSemesterSuccess();
     } catch (error) {
 
         console.log({error});

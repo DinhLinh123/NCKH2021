@@ -10,7 +10,7 @@ import { watchSagaGetTeachers } from "../../containers/Teachers/saga";
 import { watchSagaGetTopics } from "../../containers/Topics/saga";
 import { watchSagaAddLogins } from "../../containers/Login/saga";
 import { watchSagaGetStudentList } from "../../containers/Student/saga";
-import { watchSagaGetFolders } from "../../containers/Folder/saga";
+import { watchSagaAddFolders, watchSagaGetFolders } from "../../containers/Folder/saga";
 import { watchSagaAddFiles, watchSagaGetFiles } from "../../containers/Files/saga";
 //import {watchSagaGetStudentList} from "../../containers/Student/saga";
 
@@ -53,6 +53,7 @@ function* rootSaga() {
 
         //-----------Folder-----------
         watchSagaGetFolders(),
+        watchSagaAddFolders(),
         //-----------File-----------
         watchSagaGetFiles(),
         watchSagaAddFiles(),

@@ -115,6 +115,7 @@ const [changeVersion1, setChangeVersion1] = useState(false);
         <StyledSemester.Body>
           <div>
             <StyledSemester.ButtonAdd className="bottom" type="submit" onClick={() => onAdd()}>Thêm học kỳ</StyledSemester.ButtonAdd>
+            {/* ------popup------------------------------ */}
             <StyledSemester.Popup style={changeVersion1 ? {display: "block"} : {display: "none"}}>
                 <StyledSemester.PopupContent1>
                   <StyledSemester.DivSpan>

@@ -65,7 +65,7 @@ const File = () => {
       }
     return (
         <StyledSemester.Flex>
-            {/* <UpFile /> */}
+            <UpFile />
             {/* <form>
                 <input type="file" onChange={(e) => setUpLoadFile(e.target.files)} />
                 <br />

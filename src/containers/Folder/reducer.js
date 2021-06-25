@@ -14,12 +14,27 @@ const default_list = (state = INITSTALL, action) => {
             };
         
         case AcctionTypes.GET_FOLDER_SUCCESS:
-            console.log({action},'reducer get HK sc');
+            //console.log({action},'reducer get HK sc');
             return {
                 ...state,
                 list: action.payload.data,
                 isLoading: false,
             };
+
+        //----- ADD --------------------------------
+        case AcctionTypes.ADD_FOLDERS:
+            return {
+                ...state,
+                isLoading: true,
+            };
+
+        case AcctionTypes.ADD_FOLDERS_SUCCESS:
+           console.log({action},'reducer add foder');
+            return {
+                ...state,
+                list: [...state.list, action.payload.data],
+                isLoading: false,
+            };    
             default:
                 return state;
         }
