@@ -7,10 +7,15 @@ export const StyledSemester= {
             width:100%;
             display: flex;
             justify-content: center;
+           
         }
         .nameFile{
             font-size: 22px;
-            
+            margin-right: 20px;
+        }
+        .iconDown{
+            font-size: 28px;
+            color: #00008B;
         }
         .divFile{
             //margin-top: 85px;

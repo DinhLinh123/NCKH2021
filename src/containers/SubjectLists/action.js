@@ -64,7 +64,7 @@ export const AcctionTypes= {
   
   export function addSubjectListsError(err) {
     return {
-      type: AcctionTypes.DELETE_SUBJECTLISTS_ERROR,
+      type: AcctionTypes.ADD_SUBJECTLISTS_ERROR,
       payload: err,
     };
   }

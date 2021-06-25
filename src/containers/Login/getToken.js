@@ -11,8 +11,8 @@ const GetToken = () => {
     headers: {
        "Accept": "application/json",
  //"Content-Type": "application/json",
- 'Content-Type': 'application/json',
-//"Content-Type": "multipart/form-data",
+ //'Content-Type': 'application/json',
+"Content-Type": "multipart/form-data",
      
         Authorization: 'Bearer ' + `${Cookies.get('token')}`
 
