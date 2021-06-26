@@ -15,8 +15,34 @@ export const AcctionTypes= {
   PUT_ASIGNREVIEWERS_DATA: "PUT_ASIGNREVIEWERS_DATA",
   PUT_ASIGNREVIEWERS_SUCCESS: "PUT_ASIGNREVIEWERS_SUCCESS",
   PUT_ASIGNREVIEWERS_ERROR: "PUT_ASIGNREVIEWERS_ERROR",
+  GET_FOLDER: "GET_FOLDER",
+    GET_FOLDER_SUCCESS: "GET_FOLDER_SUCCESS",
+    GET_FOLDER_ERROR: "GET_FOLDER_ERROR",
 };
 //------------ Call Api --------------------------
+
+export function getFolders() {
+  return {
+    type: AcctionTypes.GET_FOLDER,
+  };
+}
+
+export function getFolderSuccess(action) {
+   console.log({action},'get Hoc ky success');
+  return {
+    type: AcctionTypes.GET_FOLDER_SUCCESS,
+    payload: action,
+
+  };
+}
+
+export function getFolderError(err) {
+  return {
+    type: AcctionTypes.GET_FOLDER_ERROR,
+    payload: err,
+  };
+}
+
 export function getAssignReviewers(idHocKy) {
     return {
       type: AcctionTypes.GET_ASIGNREVIEWERS,

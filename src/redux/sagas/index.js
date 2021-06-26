@@ -54,7 +54,7 @@ function* rootSaga() {
 
         //-----------Folder-----------
         watchSagaGetFolders(),
-        watchSagaAddFolders(),
+        // watchSagaAddFolders(),
         //-----------File-----------
         watchSagaGetFiles(),
         watchSagaAddFiles(),

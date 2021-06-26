@@ -4,17 +4,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import HeaderMonHoc from '../../layout/HeaderMonHoc';
 import { getLisTeacherSemesters } from '../ListTeacherSemesters/action';
+import GetToken from '../Login/getToken';
 import { StyledSemester } from '../Semesters/styled';
 import { getTopics } from '../Topics/action';
 import { getStudents} from "./action";
 
-const Student = () => {
-
+function Student() {
+  const GET_API_STUDENTS_URL= "https://api.quanlydoan.live/api"
   const [save , setSave]= useState([]);
   const [hide, setHide] =useState(true);
+  const [idGVHD, setIdGVHD] =useState('');
 
   let { idHocKy } = useParams();
     let {tenHocKy} = useParams();
+    let {idMonHoc} = useParams();
+    
     const dispatch = useDispatch();
     
     const isLoading = useSelector((state) => state.reducerStudent.isLoading);
@@ -32,8 +36,9 @@ const Student = () => {
   //================Hiện chọn đề tài-------------------
 
   const onShow =(magv)=>{
-    console.log("Mã gv : ", magv);
+    console.log("Mã gv : ", magv.idGVHDTheoKy);
     setHide(false);
+    setIdGVHD(magv.idGVHDTheoKy);
     //console.log("teacherSelecter.maGVHD = ", teacherSelecter);
     if(save.length >0){
       try {
@@ -49,14 +54,27 @@ const Student = () => {
       }
     }
   }
-
-  const handleChange = (selected) => {
-    console.log("đề tài được chọn ",selected); 
-    
-       
   
-  }
+  const [listIdDeTai, setListIdDeTai] = useState([])
+  const handleChange = (selected) => {
 
+      if(listIdDeTai.find((item)=>item.idDeTai == selected.idDeTai) != undefined)
+      {
+        setListIdDeTai(listIdDeTai.filter((item)=>
+          item.idDeTai !==selected.idDeTai))
+      }
+      else{
+        setListIdDeTai(listIdDeTai.concat([
+          {
+            "idDeTai" : selected.idDeTai
+          }
+        ]))
+      }
+    
+  }
+  useEffect(() => {
+    console.log(listIdDeTai);
+}, [listIdDeTai]);
   const onHide =(idDT) =>{
     setHide(true);
     
@@ -100,6 +118,10 @@ const Student = () => {
       }
     }
   }
+function topicAssign(){
+   axios.post(GET_API_STUDENTS_URL + `/ChiTietDeTai/ListChiTietDeTai/${idGVHD}/${idHocKy}/${idMonHoc}`,listIdDeTai, GetToken())
+}
+
     return (
         <>
         <StyledSemester.Flex>
@@ -147,7 +169,7 @@ const Student = () => {
               <td><button type="submit" onClick={updateTopic}>Lưu</button></td> */}
 
               <td>
-                <StyledSemester.See onClick={()=> onShow(item)}>Phân công ĐT</StyledSemester.See>
+                <StyledSemester.See onClick={()=> {onShow(item)}}>Phân công ĐT</StyledSemester.See>
               </td>
               
                
@@ -163,7 +185,7 @@ const Student = () => {
           <StyledSemester.Close onClick={onHide}>&times;</StyledSemester.Close>
           </StyledSemester.PopupTitle> 
           <div className="save">
-            <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
+            <button onClick={()=>topicAssign()}>Lưu</button>
           </div>
           <table>
             <thead>
@@ -187,7 +209,7 @@ const Student = () => {
                   type="checkbox" 
                   value={item.id}
                   id="checkbox1"
-                  onChange={()=> handleChange(item)}
+                  onChange={()=>handleChange(item)}
                   /></td>
               </tr>
               ))}
