@@ -30,8 +30,8 @@ const Folder = () => {
         dispatch(getFolders())  ;
       };
       const onAddSubmit = (e) => {
-        dispatch(addFolder(nameFolder,getPro()));
-        setChangeVersion1(false);
+        // dispatch(addFolder(nameFolder,getPro()));
+        // setChangeVersion1(false);
       }
     return (
         <StyledSemester.Flex>

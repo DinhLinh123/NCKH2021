@@ -40,7 +40,7 @@ export function* watchSagaGetFolders(){
 export function* sagaAddFolders(action, getPro) {
   console.log( "add= ", action);
     
-     
+     console.log(`${ADD_API_FOLDER_URL}${action.payload}`);
     try {
         const reponse = yield axios.post(`${ADD_API_FOLDER_URL}${action.payload}`,action.payload ,GetToken());
         

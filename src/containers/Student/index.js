@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import Headers from '../../layout/Header';
 import { StyledSemester } from '../Semesters/styled';
-import { getStudents } from './action';
+import { getStudentLocals, getStudents } from './action';
 
 const StudentList = () => {
   const [idSinhVien, setIdSinhVien] = useState("");
@@ -13,6 +13,7 @@ const StudentList = () => {
   const [dienThoai, setDienThoai] = useState("");
   const [donViThucTap, setDonViThucTap] = useState("");
   const [lopHoc , setLopHoc ] =useState("");
+  const [hide, setHide]=useState(true);
 
   const dispatch = useDispatch();
 
@@ -22,6 +23,26 @@ const StudentList = () => {
     dispatch(getStudents(idHocKy));
   }, []);
   const StudentListSelecter = useSelector((state) => state.reducerStudentList.list);
+
+  // thêm mới sinh viên 
+  const onShow= ()=>{
+    setHide(false);
+
+  };
+  const onHide= ()=>{
+    setHide(true);
+
+  };
+  useEffect(() => {
+    dispatch(getStudentLocals());
+  }, []);
+  const StudentListSelecter1 = useSelector((state) => state.reducerStudentList.list1);
+  const handleChange = (selected) => {
+    console.log("đề tài được chọn ",selected); 
+    
+       
+  
+  }
     return (
       < >
       <StyledSemester.Flex>
@@ -31,7 +52,7 @@ const StudentList = () => {
           
             <h1>Danh sách Sinh viên</h1>
             <StyledSemester.Body>
-              <StyledSemester.ButtonAdd>Thêm sinh viên</StyledSemester.ButtonAdd>
+              <StyledSemester.ButtonAdd  onClick={()=> onShow()}>Thêm sinh viên</StyledSemester.ButtonAdd>
             <table>
           <thead>
             <tr>
@@ -64,6 +85,54 @@ const StudentList = () => {
             ))}
           </tbody>
         </table>
+
+        <StyledSemester.Popup id="hide" style={hide ? {display: "none"} : {display: "block"}} >
+          <StyledSemester.PopupContent>
+            <div className="Divpopup">
+           <StyledSemester.PopupTitle>
+          <StyledSemester.Popuptext> Thêm sinh viên </StyledSemester.Popuptext>
+          <StyledSemester.Close onClick={onHide}>&times;</StyledSemester.Close>
+          </StyledSemester.PopupTitle> 
+          <div className="save">
+          <StyledSemester.ButtonAdd>Lưu</StyledSemester.ButtonAdd>
+          </div>
+          <table>
+            <thead>
+              <tr>
+              <th>Mã sinh viên</th>
+              <th>Tên sinh viên</th>
+              <th>Hòm thư</th>
+              <th>Điện thoại</th>
+              <th>Tên Môn học</th>
+              <th>Tên Lớp</th>
+              
+                <th>Chọn</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+            {StudentListSelecter1?.map ((item, index ) => (
+              <tr key= {index}>
+                <td>{item.maSinhVien}</td>
+              <td>{item.hoTen}</td>
+              <td>{item.tenSinhVien}</td>
+              <td>{item.homThu}</td>
+              <td>{item.dienThoai}</td>
+              <td>{item.tenLop}</td>
+                <td><input 
+                  type="checkbox" 
+                  value={item.id}
+                  id="checkbox1"
+                  onChange={()=> handleChange(item)}
+                  /></td>
+              </tr>
+              ))}
+             
+            </tbody>
+          </table>
+          </div>
+          </StyledSemester.PopupContent>
+        </StyledSemester.Popup>
         
         </StyledSemester.Body>
         </div>
